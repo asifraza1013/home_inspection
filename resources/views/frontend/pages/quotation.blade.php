@@ -37,7 +37,7 @@
                                     <option value="">Sun Home inspection</option>
                                     <option value="">Sun Home inspection</option>
                                 </select>
-                                <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                {{-- <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span> --}}
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -52,7 +52,7 @@
                                         <option value="">500</option>
                                         <option value="">500</option>
                                     </select>
-                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                    {{-- <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span> --}}
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -67,7 +67,7 @@
                                         <option value="">10 Years</option>
                                         <option value="">10 Years</option>
                                     </select>
-                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                    {{-- <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span> --}}
                                 </div>
                             </div>
                         </div>
