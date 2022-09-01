@@ -13,7 +13,7 @@
                             <h6 class="h3 mb-1">Welcome back!</h6>
                             <p class="text-muted mb-0">Login to manage your account.</p>
                         </div>
-                        <form class="form-validate" action="{{ route('register') }}" method="POST">
+                        <form class="form-validate" action="{{ route('user.manual.registrations') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="email">Email address</label>

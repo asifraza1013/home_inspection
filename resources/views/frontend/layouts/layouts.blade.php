@@ -102,10 +102,10 @@
         </header>
         <!-- end: Header -->
 
+        @include('sweetalert::alert')
         @yield('content')
-
         <!-- Footer -->
-        <footer id="footer">
+        <footer id="footer" style="background: -webkit-linear-gradient(96deg, #263A43 72%, #0A2FB6 50%);">
             <div class="footer-content">
                 <div class="container">
                     <div class="row">

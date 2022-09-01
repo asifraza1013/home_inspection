@@ -29,6 +29,7 @@
                                 <label for="">Select Company:</label>
                             </div>
                             <div class="col-lg-6">
+                                <div class="input-group h-100">
                                 <select name="" id="" class="form-control">
                                     <option value="" disabled selected>Please select --</option>
                                     <option value="">Sun Home inspection</option>
@@ -36,30 +37,38 @@
                                     <option value="">Sun Home inspection</option>
                                     <option value="">Sun Home inspection</option>
                                 </select>
+                                <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Square Footage:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <select name="" id="" class="form-control">
-                                    <option value="" disabled selected>Please select --</option>
-                                    <option value="">500</option>
-                                    <option value="">500</option>
-                                    <option value="">500</option>
-                                    <option value="">500</option>
-                                </select>
+                                <div class="input-group h-100">
+                                    <select name="" id="" class="form-control">
+                                        <option value="" disabled selected>Please select --</option>
+                                        <option value="">500</option>
+                                        <option value="">500</option>
+                                        <option value="">500</option>
+                                        <option value="">500</option>
+                                    </select>
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Year Built:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <select name="" id="" class="form-control">
-                                    <option value="" disabled selected>Please select --</option>
-                                    <option value="">10 Years</option>
-                                    <option value="">10 Years</option>
-                                    <option value="">10 Years</option>
-                                    <option value="">10 Years</option>
-                                </select>
+                                <div class="input-group h-100">
+                                    <select name="" id="" class="form-control">
+                                        <option value="" disabled selected>Please select --</option>
+                                        <option value="">10 Years</option>
+                                        <option value="">10 Years</option>
+                                        <option value="">10 Years</option>
+                                        <option value="">10 Years</option>
+                                    </select>
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                         </div>
                         <hr class="text-dgreen">
@@ -68,49 +77,73 @@
                                 <label for="">Home Size:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <input type="text" class="form-control" name="" placeholder="Home Size:	">
+                                <div class="input-group h-100">
+                                    <input type="text" class="form-control" name="" placeholder="Home Size:	">
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Townhouse:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <input type="text" class="form-control" name="" placeholder="Townhouse:	">
+                                <div class="input-group h-100">
+                                    <input type="text" class="form-control" name="" placeholder="Townhouse:	">
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Condo:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <input type="text" class="form-control" name="" placeholder="Condo:	">
+                                <div class="input-group h-100">
+                                    <input type="text" class="form-control" name="" placeholder="Condo:	">
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Age Fee:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <input type="text" class="form-control" name="" placeholder="Age Fee:">
+                                <div class="input-group h-100">
+                                    <input type="text" class="form-control" name="" placeholder="Age Fee:">
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Pool or Spa:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <input type="text" class="form-control" name="" placeholder="Pool or Spa:">
+                                <div class="input-group h-100">
+                                    <input type="text" class="form-control" name="" placeholder="Pool or Spa:">
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Termite:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <input type="text" class="form-control" name="" placeholder="Termite:">
+                                <div class="input-group h-100">
+                                    <input type="text" class="form-control" name="" placeholder="Termite:">
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Trip Charge:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <input type="text" class="form-control" name="" placeholder="Trip Charge:">
+                                <div class="input-group h-100">
+                                    <input type="text" class="form-control" name="" placeholder="Trip Charge:">
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Re-Inspection:</label>
                             </div>
                             <div class="col-lg-6 mt-1">
-                                <input type="text" class="form-control" name="" placeholder="Re-Inspection:">
+                                <div class="input-group h-100">
+                                    <input type="text" class="form-control" name="" placeholder="Re-Inspection:">
+                                    <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span>
+                                </div>
                             </div>
                         </div>
                         <hr class="text-dgreen">

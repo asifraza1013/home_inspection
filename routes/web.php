@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 //     return redirect()->route('home');
 // });
 
+Auth::routes();
+Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+Route::get('email/verify/{id?}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 Route::get('/faq', [FrontendController::class, 'faqIndex'])->name('faq');
@@ -26,6 +31,8 @@ Route::get('/contact_us', [FrontendController::class, 'contactusIndex'])->name('
 Route::get('/get_quotation', [FrontendController::class, 'getQuote'])->name('quotation');
 Route::get('/pricing_plans', [FrontendController::class, 'pricingPlanIndex'])->name('pricingplan');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::post('/registrations', [HomeController::class, 'manuallRegistrations'])->name('user.manual.registrations');
 
 
 /*
@@ -38,7 +45,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/profile', [UserController::class, 'profileIndex'])->name('user.profile');
 });
 
-Auth::routes(['verify'=>true]);
+// Auth::routes(['verify'=>false]);
 
 
 Route::group(['middleware' => ['auth','verified']], function () {

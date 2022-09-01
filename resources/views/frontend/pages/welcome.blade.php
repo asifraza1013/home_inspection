@@ -10,7 +10,7 @@
                 <div class="slide-captions text-start">
                     <!-- Captions -->
                     <h2 class="text-medium m-b-50">
-                        <span style="padding:20px;" class="text-light bg-mblue"> Home Inspection Services</span>
+                        <span style="padding:20px;" class="text-light bg-mblue d-block d-md-none"> Home Inspection Services</span>
                     </h2>
                     <p class="lead  text-light">
                         We offer a range of services for
@@ -33,7 +33,7 @@
                 <div class="slide-captions text-start">
                     <!-- Captions -->
                     <h2 class="text-medium m-b-50">
-                        <span style="padding:20px;" class="text-light bg-mblue"> Home Inspection Services </span>
+                        <span style="padding:20px;" class="text-light bg-mblue d-block d-md-none"> Home Inspection Services </span>
                     </h2>
                     <p class="lead text-light">Lorem ipsum dolor sit amet, consecte adipiscing elit.
                         <br /> Suspendisse condimentum porttitor cursumus.

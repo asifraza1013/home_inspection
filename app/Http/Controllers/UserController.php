@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -156,4 +157,5 @@ class UserController extends Controller
             'title'
         ]));
     }
+
 }

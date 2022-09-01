@@ -76,12 +76,15 @@ class RegisterController extends Controller
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = Hash::make($data['email']);
+        $user->save();
         if (setting('register_notification_email')) {
             Mail::to($data['email'])->send( new UserRegistered($user));
         }
-        if ( setting('default_role')) {
+        if (setting('default_role')) {
+            dd('insideSetting'.setting('default_role'));
             $user->assignRole(setting('default_role'));
         }
+        dd($user);
         return $user;
     }
 }

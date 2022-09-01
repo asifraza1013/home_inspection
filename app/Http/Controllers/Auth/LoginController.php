@@ -51,7 +51,8 @@ class LoginController extends Controller
     {
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
-            flash('You are locked! Too many attempts. please try '. setting('lockout_delay') .' mintutes later.')->warning();
+            toast('You are locked! Too many attempts. please try '. setting('lockout_delay') .' mintutes later.','warning');
+            // flash('You are locked! Too many attempts. please try '. setting('lockout_delay') .' mintutes later.')->warning();
             return redirect()->route('login')->withInput();
             return $this->sendLockoutResponse($request);
         }
@@ -63,13 +64,15 @@ class LoginController extends Controller
                 return redirect()->intended(url('/home'));
             }else{
                 Auth::logout();
-                flash('You are temporary blocked. please contact to admin')->warning();
+                toast('You are temporary blocked. please contact to admin','warning');
+                // flash('You are temporary blocked. please contact to admin')->warning();
                 return redirect()->route('login')->withInput();
             }
         }
         else {
             $this->incrementLoginAttempts($request);
-            flash('Incorrect username or password. Please try again')->error();
+            toast('Incorrect username or password. Please try again','error');
+            // flash('Incorrect username or password. Please try again')->error();
             return redirect()->route('login')->withInput();
         }
     }
