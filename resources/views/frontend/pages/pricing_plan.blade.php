@@ -5,7 +5,7 @@
     <div class="container">
         <div class="page-title">
             <h1 class="bold">Pick the best plan for your company :</h1>
-            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+            <span>Professional home inspection company services.</span>
         </div>
         <div class="breadcrumb">
             <ul>

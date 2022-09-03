@@ -5,7 +5,7 @@
     <div id="slider" class="inspiro-slider slider-halfscreen dots-creative" data-height-xs="360" data-autoplay="5000"
         data-animate-in="fadeIn" data-animate-out="fadeOut" data-items="1" data-loop="true" data-autoplay="true">
         <!-- Slide 1 -->
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/homepages/construction/images/1.jpg') }}">
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/slider/Three-Swans.jpg') }}">
             <div class="container">
                 <div class="slide-captions text-start">
                     <!-- Captions -->
@@ -13,14 +13,10 @@
                         <span style="padding:20px;" class="text-light bg-mblue d-block d-md-none"> Home Inspection Services</span>
                     </h2>
                     <p class="lead  text-light">
-                        We offer a range of services for
-                        <br /> both businesses and individuals companies,
-                        <br /> Beautiful nature, and rare feathers!. Morbi sagittis,
-                        <br /> sem quis lacinia faucibus, orci ipsum
-                        <br /> gravida tortor.
+                        To get an instant quote for a Professional <br> Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide <br> the information for the most accurate quote
                     </p>
                     <a class="btn btn-light bg-mblue"
-                        href="#">Quik Quote </a>
+                        href="{{ route('quotation') }}">Quik Quote </a>
 
                     <!-- end: Captions -->
                 </div>
@@ -28,18 +24,17 @@
         </div>
         <!-- end: Slide 1 -->
         <!-- Slide 2 -->
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/homepages/construction/images/2.jpg') }}">
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/homepages/construction/images/gallery/6.jpg') }}">
             <div class="container">
                 <div class="slide-captions text-start">
                     <!-- Captions -->
                     <h2 class="text-medium m-b-50">
                         <span style="padding:20px;" class="text-light bg-mblue d-block d-md-none"> Home Inspection Services </span>
                     </h2>
-                    <p class="lead text-light">Lorem ipsum dolor sit amet, consecte adipiscing elit.
-                        <br /> Suspendisse condimentum porttitor cursumus.
+                    <p class="lead text-light">To get an instant quote for a Professional <br> Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide <br> the information for the most accurate quote
                     </p>
                     <a class="btn btn-light bg-mblue"
-                        href="#">Quik Quote</a>
+                        href="{{ route('quotation') }}">Quik Quote</a>
 
                     <!-- end: Captions -->
                 </div>
@@ -60,13 +55,7 @@
                     <img alt="" class="img-fluid m-b-40 w-75" src="{{ asset('frontend/assets/images/site/house.png') }}">
                 </div>
                 <div class="col-7 my-auto">
-                    <p class="text-dgreen">Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown
-                        printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but
-                        also the leap into electronic typesetting, remaining essentially
-                         unchanged.</p>
+                    <p class="text-dgreen">Home inspections are easy when you start with WebsiteName Home Inspections. Home inspections are crucial when you are considering purchasing real estate and can also be a good idea if you are selling a home. Suppose you are putting a home on the market. In that case, WebsiteName Home Inspectors can give you an idea of any issues your home may have, providing the opportunity to make necessary repairs and get you top-dollar in the selling process.</p>
                 </div>
             </div>
         </div>
@@ -83,13 +72,9 @@
                     <img alt="" class="img-fluid m-b-40" src="{{ asset('frontend/assets/images/site/sound.png') }}">
                 </div>
                 <div class="col-lg-7 my-auto">
-                    <p class="text-left text-light">Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown
-                        printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but
-                        also the leap into electronic typesetting, remaining essentially
-                            unchanged.</p>
+                    <div class="container">
+                        <p class="text-left text-light">You can contact our home inspection company by sending us a message by clicking the button below. We’d love to help you with your property inspection needs, whether it’s a pre-existing or new home inspection, radon testing, or sewer line inspection.</p>
+                    </div>
                     <a class="btn btn-light btn-lg bg-mblue" href="{{ route('contactus') }}">Connect with Us! </a>
                 </div>
             </div>
@@ -107,18 +92,13 @@
                     <img alt="" class="img-fluid m-b-40 w-75" src="{{ asset('frontend/assets/images/site/reports.png') }}">
                 </div>
                 <div class="col-7 my-auto text-dgreen">
-                    <p class="text-dgreen">Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown
-                        printer took a galley of type and scrambled it to make a type
-                        specimen book. .</p>
+                    <p class="text-dgreen">You’ll likely find a home inspection report broken down as follows; An informational section that lists general details about the house, like its square footage and construction date A table of contents A general summary that includes major issues with the house Details about major home systems, their crucial components, and their operability. You can expect a home inspector to include information about:</p>
                     <ul>
-                        <li>Lorem Ipsum is simply dummy text of the printing .</li>
-                        <li>typesetting industry. Lorem Ipsum has been the industry's. </li>
-                        <li>printer took a galley of type and scrambled.  </li>
-                        <li>specimen book. It has survived not only five centuries.  </li>
-                        <li>standard dummy text ever since the 1500s.   </li>
-                        <li>also the leap into electronic typesetting, remaining.  </li>
+                        <li>Structural components like the foundation and framing of the home Exterior features like siding, porches, balconies, walkways, and driveways</li>
+                        <li>Roof features like shingles, flashing, and skylights.</li>
+                        <li>Plumbing systems like pipes, drains, and water heating equipment.</li>
+                        <li>Electrical equipment like service panels, breakers, and fuses. </li>
+                        <li>Heating and cooling systems.  </li>
                     </ul>
                 </div>
             </div>
@@ -261,18 +241,14 @@
                     </div>
                 </div>
                 <div class="col-lg-7 my-auto text-light">
-                    <p class="text-left text-light">Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown
-                        printer took a galley of type and scrambled it to make a type
-                        specimen book. </p>
+                    <p class="text-left text-light">To get an instant quote for a Professional Home Inspection or auxiliary service, please fill out this quick and easy form and provide the following information for the most accurate quote:</p>
                         <ul>
-                            <li>Lorem Ipsum is simply dummy text of the printing .</li>
-                            <li>typesetting industry. Lorem Ipsum has been the industry's. </li>
-                            <li>printer took a galley of type and scrambled.  </li>
-                            <li>specimen book. It has survived not only five centuries.  </li>
-                            <li>standard dummy text ever since the 1500s.   </li>
-                            <li>also the leap into electronic typesetting, remaining.  </li>
+                            <li>Town of the property?</li>
+                            <li>Square footage of the home? </li>
+                            <li>Street address?  </li>
+                            <li>Age of the home?  </li>
+                            <li>Preferred inspection date if known?  </li>
+                            <li>Pool or Spa?  </li>
                         </ul>
                 </div>
             </div>
@@ -282,7 +258,7 @@
     <section>
         <div class="container">
             <div class="heading-text heading-section text-center m-b-40">
-                <span class="lead text-mgreen">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                <span class="lead text-mgreen">Defects And Our Works</span>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-xl-3 col-6">

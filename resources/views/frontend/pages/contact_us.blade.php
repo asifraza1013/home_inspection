@@ -5,7 +5,7 @@
     <div class="container">
         <div class="page-title">
             <h1 class="bold">Contact Us!</h1>
-            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+            <span>You can contact our home inspection company by sending us a message by clicking the button below. </span>
         </div>
         <div class="breadcrumb">
             <ul>
@@ -50,7 +50,7 @@
                 <div class="contact-box my-auto text-light text-center p-3" style="width: 300px; height:250px; background:#0A2FB6;position: absolute;top:50%;bottom:50%;margin-left:-70px">
                     {{-- <i class="icon-mobile text-light"></i> --}}
                     <i class="icon-phone fa-3x"></i>
-                    <h4 class="bold">(555) 555-1234</h4>
+                    <h4 class="bold">480-563-1800</h4>
                     <i class="icon-mail fa-3x mt-1"></i>
                     <h4 class="bold">support@bitwork.com</h4>
                     <span>

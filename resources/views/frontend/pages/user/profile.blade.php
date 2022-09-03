@@ -120,7 +120,7 @@
         <div class="container">
             <div class="page-title">
                 <h1 class="bold">User Profile!</h1>
-                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                <span>Home inspections are easy when you start with WebsiteName Home Inspections. <br> Home inspections are crucial when you are considering purchasing real estate and can also be a good idea if you are selling a home.</span>
             </div>
             <div class="breadcrumb">
                 <ul>
@@ -226,24 +226,8 @@
 
                                 <div class="description p-3"
                                     style="border: 1px solid lightgray; border-top: 0px; border-bottom: 2px solid #0A2FB6">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the
-                                        industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                        galley of type and
-                                        scrambled it to make a type specimen book. It has survived not only five centuries,
-                                        but also the leap into
-                                        electronic typesetting, remaining essentially unchanged. It was popularised in the
-                                        1960s with the release of
-                                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                                        publishing software like
-                                        Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the
-                                        industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                        galley of type and
-                                        scrambled it to make a type specimen book. It has survived not only five centuries,
-                                        but also the leap into
-                                        electronic typesetting, remaining essentially unchanged.</p>
+                                    <p>Home inspections are easy when you start with WebsiteName Home Inspections. Home inspections are crucial when you are considering purchasing real estate and can also be a good idea if you are selling a home. Suppose you are putting a home on the market. In that case, WebsiteName Home Inspectors can give you an idea of any issues your home may have, providing the opportunity to make necessary repairs and get you top-dollar in the selling process.</p>
+                                    <p>You’ll likely find a home inspection report broken down as follows; An informational section that lists general details about the house, like its square footage and construction date A table of contents A general summary that includes major issues with the house Details about major home systems, their crucial components, and their operability. You can expect a home inspector to include information about:</p>
                                 </div>
                             </div>
                             <div class="space"></div>

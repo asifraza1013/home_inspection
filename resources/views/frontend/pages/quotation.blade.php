@@ -5,7 +5,7 @@
     <div class="container">
         <div class="page-title">
             <h1 class="bold">Get Quotation</h1>
-            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+            <span>To get an instant quote for a Professional Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide the information for the most accurate quote</span>
         </div>
         <div class="breadcrumb">
             <ul>

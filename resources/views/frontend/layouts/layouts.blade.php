@@ -31,7 +31,7 @@
             <div class="header-inner">
                 <div class="container">
                     <!--Logo-->
-                    <div id="logo"> <a href="{{ route('welcome') }}"><span class="logo-default text-mblue">LOGO</span><span
+                    <div id="logo"> <a href="{{ route('welcome') }}"><span class="logo-default text-mblue"> LOGO </span><span
                                 class="logo-dark">LOGO</span></a> </div>
                     <!--End: Logo-->
 
@@ -112,9 +112,8 @@
                         <div class="col-lg-5">
                             <div class="widget">
 
-                                <div class="widget-title">HOME INSPECTION</div>
-                                <p class="mb-5">All rights reserved.
-                                    Copyright © 2022. LOGO.</p>
+                                <div class="widget-title">SABLE SOFTWARE</div>
+                                {{-- <p class="mb-5">480-563-1800</p> --}}
                                 {{-- <a href="#"
                                     class="btn btn-inverted" target="_blank">Purchase Now</a> --}}
                             </div>
@@ -177,7 +176,7 @@
             <div class="copyright-content">
                 <div class="container">
                     <div class="copyright-text text-center">&copy; 2022 LOGO - All Rights Reserved.<a href="#" target="_blank" rel="noopener">
-                            ANYSOLUTIONS.NET</a> </div>
+                        SABLE SOFTWARE</a> </div>
                 </div>
             </div>
         </footer>
