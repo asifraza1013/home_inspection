@@ -31,7 +31,7 @@ class HomeController extends Controller
         toast('Login Successfull!','success');
         $user = Auth::user();
         $userRole = $user->getRoleNames();
-        if($userRole[0] == 'user') return redirect(route('user.profile'));
+        if($userRole[0] == 'user') return redirect(route('user.dashboard'));
         return view('home');
     }
 

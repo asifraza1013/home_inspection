@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
 
     Route::resource('users', 'UserController');
+    Route::get('/users/{user?}', 'UserController@profile')->name('users.index');
 
     Route::get('/profile/{user}', 'UserController@profile')->name('profile.edit');
 
@@ -77,6 +78,9 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
     Route::post('/settings', 'SettingController@update')->name('settings.update');
 
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/dashboard', 'DashboardController@userDashboard')->name('user.dashboard');
+    });
 
     Route::get('media', function (){
         return view('media.index');

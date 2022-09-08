@@ -5,7 +5,7 @@
     <div id="slider" class="inspiro-slider slider-halfscreen dots-creative" data-height-xs="360" data-autoplay="5000"
         data-animate-in="fadeIn" data-animate-out="fadeOut" data-items="1" data-loop="true" data-autoplay="true">
         <!-- Slide 1 -->
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/slider/Three-Swans.jpg') }}">
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/login.png') }}" style="background-position: center;">
             <div class="container">
                 <div class="slide-captions text-start">
                     <!-- Captions -->
@@ -24,7 +24,7 @@
         </div>
         <!-- end: Slide 1 -->
         <!-- Slide 2 -->
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/homepages/construction/images/gallery/6.jpg') }}">
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/login.png') }}" style="background-position: center;">
             <div class="container">
                 <div class="slide-captions text-start">
                     <!-- Captions -->
@@ -55,7 +55,7 @@
                     <img alt="" class="img-fluid m-b-40 w-75" src="{{ asset('frontend/assets/images/site/house.png') }}">
                 </div>
                 <div class="col-7 my-auto">
-                    <p class="text-dgreen">Home inspections are easy when you start with WebsiteName Home Inspections. Home inspections are crucial when you are considering purchasing real estate and can also be a good idea if you are selling a home. Suppose you are putting a home on the market. In that case, WebsiteName Home Inspectors can give you an idea of any issues your home may have, providing the opportunity to make necessary repairs and get you top-dollar in the selling process.</p>
+                    <p class="text-dgreen">Home inspections are easy when you start with Sable Software Home Inspections. Home inspections are crucial when you are considering purchasing real estate and can also be a good idea if you are selling a home. Suppose you are putting a home on the market. In that case, Sable Software Home Inspectors can give you an idea of any issues your home may have, providing the opportunity to make necessary repairs and get you top-dollar in the selling process.</p>
                 </div>
             </div>
         </div>

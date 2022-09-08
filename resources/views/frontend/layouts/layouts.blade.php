@@ -109,7 +109,7 @@
             <div class="footer-content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-3">
                             <div class="widget">
 
                                 <div class="widget-title">SABLE SOFTWARE</div>
@@ -118,52 +118,50 @@
                                     class="btn btn-inverted" target="_blank">Purchase Now</a> --}}
                             </div>
                         </div>
-                        <div class="col-lg-7">
+                        <div class="col-lg-9">
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-4">
                                     <div class="widget">
-                                        <div class="widget-title">Discover</div>
-                                        <ul class="list">
-                                            <li><a href="#">Features</a></li>
-                                            <li><a href="#">Layouts</a></li>
-                                            <li><a href="#">Corporate</a></li>
-                                            <li><a href="#">Updates</a></li>
-                                            <li><a href="{{ route('pricingplan') }}">Pricing</a></li>
-                                            <li><a href="#">Customers</a></li>
-                                        </ul>
+                                        <div class="widget-title">Contact Us</div>
+                                        <div class="d-flex text-white">
+                                            <h5> <i class="icon-map-pin fa-2x"></i>
+                                                Wisconsin Ave, Suite 700
+                                                Chevy Chase, Maryland 20815</h5>
+                                        </div>
+                                        <div class="d-flex text-white mt-4">
+                                            <h5> <i class="icon-mail fa-2x"></i>
+                                                info@sablesoftware.com</h5>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-3">
                                     <div class="widget">
-                                        <div class="widget-title">Features</div>
+                                        <div class="widget-title">About</div>
                                         <ul class="list">
-                                            <li><a href="#">Layouts</a></li>
-                                            <li><a href="#">Headers</a></li>
-                                            <li><a href="#">Widgets</a></li>
-                                            <li><a href="#">Footers</a></li>
+                                            <li><a href="#">Quick Quote</a></li>
+                                            <li><a href="#">Companies</a></li>
+                                            <li><a href="#">Tech</a></li>
+                                            <li><a href="#">FAQ’s</a></li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-3">
+                                <div class="col-lg-5">
                                     <div class="widget">
-                                        <div class="widget-title">Pages</div>
-                                        <ul class="list">
-                                            <li><a href="#">Portfolio</a></li>
-                                            <li><a href="#">Blog</a></li>
-                                            <li><a href="#">Shop</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="widget">
-                                        <div class="widget-title">Support</div>
-                                        <ul class="list">
-                                            <li><a href="{{ route('contactus') }}">Help Desk</a></li>
-                                            <li><a href="#">Documentation</a></li>
-                                            <li><a href="{{ route('contactus') }}">Contact Us</a></li>
-                                        </ul>
+                                        <div class="widget-title">Search</div>
+                                        <input type="text" class="form-control bg-white" placeholder="Search ....">
+                                        <input type="button" value="Search" name="Search" class="btn bg-mblue btn-block rounded-0 mt-3">
+
+                                        <div class="mt-5">
+                                            <div class="widget-title">Follow us</div>
+                                            <span class="d-flex ">
+                                                <a href="#"><i class="icon-twitter fa-2x"></i></a>
+                                                <a href="#"><i class="icon-facebook fa-2x"></i></a>
+                                                <a href="#"><i class="icon-map-pin fa-2x"></i></a>
+                                                <a href="#"><i class="icon-instagram fa-2x"></i></a>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

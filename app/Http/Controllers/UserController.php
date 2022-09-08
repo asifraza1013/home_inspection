@@ -32,7 +32,8 @@ class UserController extends Controller
         if ($request->has('search')) {
             $users = User::where('name', 'like', '%'.$request->search.'%')->paginate(setting('record_per_page', 15));
         }else{
-            $users= User::paginate(setting('record_per_page', 15));
+            if($request->has('type') && $request->type == 'admin') $users= User::role('super-admin')->paginate(setting('record_per_page', 15));
+            else $users= User::role('user')->paginate(setting('record_per_page', 15));
         }
         $title =  'Manage Users';
         return view('users.index', compact('users','title'));

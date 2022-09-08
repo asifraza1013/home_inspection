@@ -50,9 +50,9 @@
                 <div class="contact-box my-auto text-light text-center p-3" style="width: 300px; height:250px; background:#0A2FB6;position: absolute;top:50%;bottom:50%;margin-left:-70px">
                     {{-- <i class="icon-mobile text-light"></i> --}}
                     <i class="icon-phone fa-3x"></i>
-                    <h4 class="bold">480-563-1800</h4>
+                    <h4 class="bold">0800-480-563-1800</h4>
                     <i class="icon-mail fa-3x mt-1"></i>
-                    <h4 class="bold">support@bitwork.com</h4>
+                    <h4 class="bold">info@sablesoftware.com</h4>
                     <span>
                         <i class="icon-twitter fa-2x"></i>
                         <i class="icon-facebook fa-2x"></i>
