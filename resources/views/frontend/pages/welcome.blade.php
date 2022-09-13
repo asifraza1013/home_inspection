@@ -12,9 +12,11 @@
                     <h2 class="text-medium m-b-50">
                         <span style="padding:20px;" class="text-light bg-mblue d-block d-md-none"> Home Inspection Services</span>
                     </h2>
-                    <p class="lead  text-light">
-                        To get an instant quote for a Professional <br> Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide <br> the information for the most accurate quote
-                    </p>
+                    <div class="w-lg-50" style="background-color: #1f4026;padding: 15px; opacity:'0.6' !important;">
+                        <p class="lead  text-light">
+                            To get an instant quote for a Professional <br> Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide <br> the information for the most accurate quote
+                        </p>
+                    </div>
                     <a class="btn btn-light bg-mblue"
                         href="{{ route('quotation') }}">Quik Quote </a>
 
@@ -31,8 +33,9 @@
                     <h2 class="text-medium m-b-50">
                         <span style="padding:20px;" class="text-light bg-mblue d-block d-md-none"> Home Inspection Services </span>
                     </h2>
-                    <p class="lead text-light">To get an instant quote for a Professional <br> Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide <br> the information for the most accurate quote
-                    </p>
+                    <div class="w-lg-50" style="background-color: #1f4026; padding: 15px; opacity:0.6 !important;">
+                        <p class="lead text-light">To get an instant quote for a Professional <br> Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide <br> the information for the most accurate quote</p>
+                    </div>
                     <a class="btn btn-light bg-mblue"
                         href="{{ route('quotation') }}">Quik Quote</a>
 

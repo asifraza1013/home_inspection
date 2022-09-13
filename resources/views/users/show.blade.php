@@ -46,11 +46,17 @@
                         <div class="col-sm-1">
                             Role
                         </div>
+                        @if($currentRoleName == 'admin')
+                        <div class="col-sm-3">
+                                <strong>{{ config('constants.admin_roles.'.$user->type) }}</strong>
+                        </div>
+                        @else
                         <div class="col-sm-3">
                             @foreach ($user->roles as $role)
                                 <strong>{{ $role->name }}</strong>
                             @endforeach
                         </div>
+                        @endif
                     </div>
                     <div class="row">
                         <div class="col-sm-1">

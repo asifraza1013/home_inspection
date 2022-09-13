@@ -52,7 +52,7 @@ class RolePermissionSeeder extends Seeder
         $usr = User::create([
             'name'=> 'Admin',
             'email' => 'admin@email.com',
-            'password' => 'secret',
+            'password' => 'admin',
             'status' => true,
             'email_verified_at' => now(),
         ]);
@@ -69,10 +69,29 @@ class RolePermissionSeeder extends Seeder
         $user = User::create([
             'name'=> 'User',
             'email' => 'user@email.com',
-            'password' => 'secret',
+            'password' => 'admin',
             'status' => true,
             'email_verified_at' => now(),
         ]);
         $user->assignRole($role);
+
+        $adminPermissions = [
+            'view-user',
+            'create-user',
+            'update-user',
+            'destroy-user',
+        ];
+        // Create user & role
+        $role = Role::create(['name' => 'admin']);
+        $admin->syncPermissions($adminPermissions);
+
+        $inspector = User::create([
+            'name'=> 'Inspector',
+            'email' => 'inpector@email.com',
+            'password' => 'admin',
+            'status' => true,
+            'email_verified_at' => now(),
+        ]);
+        $inspector->assignRole($role);
     }
 }

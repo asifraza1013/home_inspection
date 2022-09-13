@@ -238,5 +238,89 @@
             </div>
         </div>
         @endif
+        @if($role == 'admin')
+        <div class="navbar-inner">
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('admin*')) ? 'active' : '' }}" href="{{route('admin.dashboard')}}">
+                            <i class="ni ni-shop text-primary"></i>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('admin.dashboard*')) ? 'active' : '' }}" href="{{route('admin.dashboard')}}">
+                            <i class="ni ni-notification-70 text-primary"></i>
+                            <span class="nav-link-text">Notifications</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('admin.dashboard*')) ? 'active' : '' }}" href="#">
+                            <i class="ni ni-archive-2 text-primary"></i>
+                            <span class="nav-link-text">History</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('admin.dashboard*')) ? 'active' : '' }}" href="#">
+                            <i class="ni ni-tag text-primary"></i>
+                            <span class="nav-link-text">Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('users*')) ? 'active' : '' }}" href="{{route('users.index', ['type' =>'inspector'])}}">
+                            <i class="ni ni-circle-08 text-primary"></i>
+                            <span class="nav-link-text">Clients</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('admin.users*')) ? 'active' : '' }}" href="#inspections"  data-toggle="collapse" role="button" aria-expanded="true" aria-controls="inspections">
+                            <i class="fas text-primary fa-tasks"></i>
+                            <span class="nav-link-text">Inspections</span>
+                        </a>
+                        <div class="collapse" id="inspections">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"><span class="sidenav-mini-icon">D </span><span class="sidenav-normal">Inspections Requested</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"><span class="sidenav-mini-icon">D </span><span class="sidenav-normal">Inspections Scheduled</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('admin.users*')) ? 'active' : '' }}" href="#reports"  data-toggle="collapse" role="button" aria-expanded="true" aria-controls="reports">
+                            <i class="fas text-primary fa-tasks"></i>
+                            <span class="nav-link-text">Reports</span>
+                        </a>
+                        <div class="collapse" id="reports">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"><span class="sidenav-mini-icon">D </span><span class="sidenav-normal">Report Templates</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"><span class="sidenav-mini-icon">D </span><span class="sidenav-normal">Past Reports</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('admin.dashboard*')) ? 'active' : '' }}" href="#">
+                            <i class="ni ni-paper-diploma text-primary"></i>
+                            <span class="nav-link-text">Subscription Plan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('profile*')) ? 'active' : '' }}" href="{{ route('profile.edit', $auth->id) }}">
+                            <i class="ni ni-user-run text-primary"></i>
+                            <span class="nav-link-text">Profile Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @endif
     </div>
 </nav>

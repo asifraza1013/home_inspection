@@ -31,7 +31,9 @@ class HomeController extends Controller
         toast('Login Successfull!','success');
         $user = Auth::user();
         $userRole = $user->getRoleNames();
+        if($user->type != 1) return redirect(route('user.profile'));
         if($userRole[0] == 'user') return redirect(route('user.dashboard'));
+        if($userRole[0] == 'admin') return redirect(route('admin.dashboard'));
         return view('home');
     }
 
@@ -59,7 +61,7 @@ class HomeController extends Controller
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = $data['password'];
-        $user->email_verified_at = Carbon::now();
+        $user->email_verified_at = Carbon::now()->toDateTimeString();
         $user->status = 1;
         $user->save();
         // if (setting('register_notification_email')) {

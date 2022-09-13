@@ -81,6 +81,9 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::get('/dashboard', 'DashboardController@userDashboard')->name('user.dashboard');
     });
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/dashboard', 'DashboardController@inspectorDashboard')->name('admin.dashboard');
+    });
 
     Route::get('media', function (){
         return view('media.index');

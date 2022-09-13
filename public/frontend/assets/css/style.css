@@ -6735,6 +6735,9 @@ body[data-bg-image] { background-attachment: fixed; background-position: top cen
     .w-lg-75 {
         width: 75%;
     }
+    .w-lg-50 {
+        width: 50%;
+    }
 }
 
 .form-check-input {

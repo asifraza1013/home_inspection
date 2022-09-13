@@ -13,4 +13,12 @@ class DashboardController extends Controller
             'title',
         ]));
     }
+
+    public function inspectorDashboard()
+    {
+        $title = 'Inspector Dashboard';
+        return view('dashboards.admin_dashboard', compact([
+            'title',
+        ]));
+    }
 }

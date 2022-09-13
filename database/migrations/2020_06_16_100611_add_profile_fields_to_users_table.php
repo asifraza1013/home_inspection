@@ -17,6 +17,7 @@ class AddProfileFieldsToUsersTable extends Migration
             $table->string('phone_number')->after('email')->nullable();
             $table->string('profile_photo')->after('phone_number')->nullable();
             $table->boolean('status')->default(0);
+            $table->integer('type')->default(1);
         });
     }
 
