@@ -577,10 +577,10 @@ var INSPIRO = {},
 
 
 
-            
+
         },
         mainMenuResponsiveShow: function() {
-           
+
         },
         mainMenuOverlay: function() {},
         pageMenu: function() {
@@ -744,6 +744,7 @@ var INSPIRO = {},
                             $captionElem.css({
                                 opacity: 1,
                             });
+                            $('.banner-text').css({opacity: 0.6,})
                             $captionElem.addClass(captionAnimation);
                         }, captionDelay);
                     });
@@ -1419,7 +1420,7 @@ var INSPIRO = {},
                         elemWidth = elem.outerWidth();
 
                     /* if(elemVisible !== "all") {
-                      
+
                     }else {
                       if ($body.hasClass("b--desktop")) {
 

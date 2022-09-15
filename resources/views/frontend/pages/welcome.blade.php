@@ -1,18 +1,23 @@
 @extends('frontend.layouts.layouts')
 
+<style>
+    .opecity:{
+        opacity: 0.6 !important;
+    }
+</style>
 @section('content')
     <!-- Inspiro Slider -->
     <div id="slider" class="inspiro-slider slider-halfscreen dots-creative" data-height-xs="360" data-autoplay="5000"
         data-animate-in="fadeIn" data-animate-out="fadeOut" data-items="1" data-loop="true" data-autoplay="true">
         <!-- Slide 1 -->
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/login.png') }}" style="background-position: center;">
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/banner.jpeg') }}" style="background-position: center;">
             <div class="container">
                 <div class="slide-captions text-start">
                     <!-- Captions -->
                     <h2 class="text-medium m-b-50">
                         <span style="padding:20px;" class="text-light bg-mblue d-block d-md-none"> Home Inspection Services</span>
                     </h2>
-                    <div class="w-lg-50" style="background-color: #1f4026;padding: 15px; opacity:'0.6' !important;">
+                    <div class="w-lg-50 opecity rounded banner-text" style="background-color: hsl(0deg 0% 0%);padding: 15px;">
                         <p class="lead  text-light">
                             To get an instant quote for a Professional <br> Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide <br> the information for the most accurate quote
                         </p>
@@ -24,9 +29,21 @@
                 </div>
             </div>
         </div>
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/banner3.jpeg') }}" style="background-position: center;">
+            <div class="container">
+                <div class="slide-captions text-start">
+                </div>
+            </div>
+        </div>
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/banner1.jpeg') }}" style="background-position: center;">
+            <div class="container">
+                <div class="slide-captions text-start">
+                </div>
+            </div>
+        </div>
         <!-- end: Slide 1 -->
         <!-- Slide 2 -->
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/login.png') }}" style="background-position: center;">
+        {{-- <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/login.png') }}" style="background-position: center;">
             <div class="container">
                 <div class="slide-captions text-start">
                     <!-- Captions -->
@@ -42,7 +59,7 @@
                     <!-- end: Captions -->
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- end: Slide 2 -->
     </div>
     <!--end: Inspiro Slider -->
