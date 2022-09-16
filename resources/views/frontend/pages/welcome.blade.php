@@ -10,14 +10,14 @@
     <div id="slider" class="inspiro-slider slider-halfscreen dots-creative" data-height-xs="360" data-autoplay="5000"
         data-animate-in="fadeIn" data-animate-out="fadeOut" data-items="1" data-loop="true" data-autoplay="true">
         <!-- Slide 1 -->
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/banner.jpeg') }}" style="background-position: center;">
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/newbanner1.jpg') }}" style="background-position: center;">
             <div class="container">
                 <div class="slide-captions text-start">
                     <!-- Captions -->
                     <h2 class="text-medium m-b-50">
                         <span style="padding:20px;" class="text-light bg-mblue d-block d-md-none"> Home Inspection Services</span>
                     </h2>
-                    <div class="w-lg-50 opecity rounded banner-text" style="background-color: hsl(0deg 0% 0%);padding: 15px;">
+                    <div class="w-lg-50 opecity rounded banner-text" style="background-color: blue;padding: 15px;">
                         <p class="lead  text-light">
                             To get an instant quote for a Professional <br> Home Inspection or auxiliary service, <br> please fill out this quick and easy form and provide <br> the information for the most accurate quote
                         </p>
@@ -29,13 +29,31 @@
                 </div>
             </div>
         </div>
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/banner3.jpeg') }}" style="background-position: center;">
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/newbanner2.jpg') }}" style="background-position: center;">
             <div class="container">
                 <div class="slide-captions text-start">
                 </div>
             </div>
         </div>
-        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/site/banner1.jpeg') }}" style="background-position: center;">
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/newbanner3.jpg') }}" style="background-position: center;">
+            <div class="container">
+                <div class="slide-captions text-start">
+                </div>
+            </div>
+        </div>
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/newbanner4.jpg') }}" style="background-position: center;">
+            <div class="container">
+                <div class="slide-captions text-start">
+                </div>
+            </div>
+        </div>
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/newbanner5.jpg') }}" style="background-position: center;">
+            <div class="container">
+                <div class="slide-captions text-start">
+                </div>
+            </div>
+        </div>
+        <div class="slide" data-bg-image="{{ asset('frontend/assets/images/newbanner6.jpg') }}" style="background-position: center;">
             <div class="container">
                 <div class="slide-captions text-start">
                 </div>
