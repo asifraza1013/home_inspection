@@ -84,6 +84,9 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', 'DashboardController@inspectorDashboard')->name('admin.dashboard');
     });
+    Route::group(['prefix' => 'quote'], function () {
+        Route::get('/options', 'QuoteManagementController@quotationOptions')->name('admin.quote.options');
+    });
 
     Route::get('media', function (){
         return view('media.index');

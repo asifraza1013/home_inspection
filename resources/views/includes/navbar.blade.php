@@ -318,6 +318,19 @@
                             <span class="nav-link-text">Profile Settings</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('admin.quote*')) ? 'active' : '' }}" href="#settings"  data-toggle="collapse" role="button" aria-expanded="true" aria-controls="settings">
+                            <i class="ni ni-settings-gear-65 text-primary"></i>
+                            <span class="nav-link-text">Settings</span>
+                        </a>
+                        <div class="collapse" id="settings">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.quote.options') }}" class="nav-link"><span class="sidenav-mini-icon">D </span><span class="sidenav-normal">Quote Options</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
