@@ -48,18 +48,17 @@ class RolePermissionSeeder extends Seeder
         // Create Super user & role
         $admin= Role::create(['name' => 'super-admin']);
         $admin->syncPermissions($permissions);
-
         $usr = User::create([
-            'name'=> 'Admin',
-            'email' => 'admin@email.com',
+            'name'=> 'Super Admin',
+            'email' => 'superadmin@admin.com',
             'password' => 'admin',
             'status' => true,
             'email_verified_at' => now(),
         ]);
 
         $usr->assignRole($admin);
-
         $usr->syncPermissions($permissions);
+
 
         // Create user & role
         $role = Role::create(['name' => 'user']);
@@ -80,18 +79,41 @@ class RolePermissionSeeder extends Seeder
             'create-user',
             'update-user',
             'destroy-user',
+            'view-role',
+            'view-permission',
+            'create-role',
+            'create-permission',
+            'update-role',
+            'update-permission',
+            'destroy-role',
+            'destroy-permission',
         ];
-        // Create user & role
-        $role = Role::create(['name' => 'admin']);
-        $admin->syncPermissions($adminPermissions);
 
+        // Create Super user & role
+        $adminRole= Role::create(['name' => 'admin']);
+        $adminRole->syncPermissions($permissions);
+
+        // Create user & role
         $inspector = User::create([
-            'name'=> 'Inspector',
-            'email' => 'inpector@email.com',
+            'name'=> 'Admin',
+            'email' => 'admin@admin.com',
             'password' => 'admin',
             'status' => true,
             'email_verified_at' => now(),
         ]);
-        $inspector->assignRole($role);
+        $inspector->assignRole($adminRole);
+        $inspector->syncPermissions($adminPermissions);
+        // $inspector->givePermissionTo('update-settings');
+        // $inspector->givePermissionTo('view-user');
+        // $inspector->givePermissionTo('create-user');
+        // $inspector->givePermissionTo('update-user');
+        // $inspector->givePermissionTo('destroy-user');
+        // $inspector->givePermissionTo('view-role');
+        // $inspector->givePermissionTo('view-permission');
+        // $inspector->givePermissionTo('create-role');
+        // $inspector->givePermissionTo('update-role');
+        // $inspector->givePermissionTo('update-permission');
+        // $inspector->givePermissionTo('destroy-role');
+        // $inspector->givePermissionTo('destroy-role');
     }
 }
