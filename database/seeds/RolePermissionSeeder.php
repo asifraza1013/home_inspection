@@ -103,6 +103,9 @@ class RolePermissionSeeder extends Seeder
         ]);
         $inspector->assignRole($adminRole);
         $inspector->syncPermissions($adminPermissions);
+
+        // create default quote options
+        addDefaultQuotation($inspector->id);
         // $inspector->givePermissionTo('update-settings');
         // $inspector->givePermissionTo('view-user');
         // $inspector->givePermissionTo('create-user');

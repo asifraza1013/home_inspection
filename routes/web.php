@@ -68,15 +68,15 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
     Route::resource('permissions', 'PermissionController')->except(['show','destroy','update']);
 
-    Route::resource('category', 'CategoryController')->except('show');
+    // Route::resource('category', 'CategoryController')->except('show');
 
-    Route::resource('post', 'PostController');
+    // Route::resource('post', 'PostController');
 
-    Route::get('/activity-log', 'SettingController@activity')->name('activity-log.index');
+    // Route::get('/activity-log', 'SettingController@activity')->name('activity-log.index');
 
-    Route::get('/settings', 'SettingController@index')->name('settings.index');
+    // Route::get('/settings', 'SettingController@index')->name('settings.index');
 
-    Route::post('/settings', 'SettingController@update')->name('settings.update');
+    // Route::post('/settings', 'SettingController@update')->name('settings.update');
 
     Route::group(['prefix' => 'user'], function () {
         Route::get('/dashboard', 'DashboardController@userDashboard')->name('user.dashboard');
@@ -84,8 +84,11 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', 'DashboardController@inspectorDashboard')->name('admin.dashboard');
     });
+
+    // admin routes
     Route::group(['prefix' => 'quote'], function () {
         Route::get('/options', 'QuoteManagementController@quotationOptions')->name('admin.quote.options');
+        Route::post('/options', 'QuoteManagementController@updateQuotation')->name('admin.quote.options.update');
     });
 
     Route::get('media', function (){

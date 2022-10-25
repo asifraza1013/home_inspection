@@ -32,6 +32,7 @@
 <div class="main-content" id="panel">
     @include('includes.header')
     @include('includes.page-header')
+    @include('sweetalert::alert')
     <div class="container-fluid mt--6">
         @yield('content')
     </div>
@@ -44,6 +45,6 @@
     <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-confirm.min.js')}}"></script>
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
-    @stack('scripts')
+    @yield('scripts')
 </body>
 </html>

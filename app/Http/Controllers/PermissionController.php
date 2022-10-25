@@ -27,7 +27,8 @@ class PermissionController extends Controller
             ->causedBy(Auth::user())
             ->log('view');
         $title = 'Manage Permissions';
-        $permissions = Permission::paginate(setting('record_per_page', 15));
+        $auth = Auth::user();
+        $permissions = Permission::where('permission_for', $auth->type)->paginate(setting('record_per_page', 15));
         return view('permissions.index', compact('permissions','title'));
     }
 

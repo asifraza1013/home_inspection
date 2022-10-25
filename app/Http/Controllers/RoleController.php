@@ -28,7 +28,8 @@ class RoleController extends Controller
             ->causedBy(Auth::user())
             ->log('view');
         $title = 'Manage Roles';
-        $roles = Role::paginate(setting('record_per_page', 15));
+        $auth = Auth::user();
+        $roles = Role::where('role_for', $auth->type)->paginate(setting('record_per_page', 15));
         return view('roles.index', compact('roles','title'));
     }
 
@@ -43,7 +44,8 @@ class RoleController extends Controller
             ->causedBy(Auth::user())
             ->log('create');
         $title = 'Create role';
-        $permissions = Permission::pluck('name', 'id');
+        $auth = Auth::user();
+        $permissions = Permission::where('permission_for', $auth->type)->pluck('name', 'id');
         return view('roles.create', compact('permissions','title'));
     }
 

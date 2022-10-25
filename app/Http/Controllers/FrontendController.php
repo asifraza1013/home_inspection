@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -9,8 +10,10 @@ class FrontendController extends Controller
     public function index()
     {
         $title = 'Landing Page';
+        $compnies = User::where('type', 2)->where('status', 1)->get();
         return view('frontend.pages.welcome', compact([
-            'title'
+            'title',
+            'compnies',
         ]));
     }
 
