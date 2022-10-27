@@ -31,8 +31,8 @@
     }
 
     .picture {
-        width: 106px;
-        height: 106px;
+        width: 170px;
+        height: 170px;
         background-color: #4F8073;
         border: 4px solid #0A2FB6;
         color: #FFFFFF;
@@ -120,7 +120,9 @@
         <div class="container">
             <div class="page-title">
                 <h1 class="bold">User Profile!</h1>
-                <span>Home inspections are easy when you start with WebsiteName Home Inspections. <br> Home inspections are crucial when you are considering purchasing real estate and can also be a good idea if you are selling a home.</span>
+                <span>Home inspections are easy when you start with WebsiteName Home Inspections. <br> Home inspections are
+                    crucial when you are considering purchasing real estate and can also be a good idea if you are selling a
+                    home.</span>
             </div>
             <div class="breadcrumb">
                 <ul>
@@ -132,9 +134,6 @@
             </div>
         </div>
     </section>
-    @php
-    $auth = Auth::user();
-    @endphp
     <section>
         <div class="space"></div>
         <div class="container">
@@ -152,22 +151,23 @@
                         <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact3" role="tab"
                             aria-controls="contact" aria-selected="false">Pricing</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact3" role="tab"
                             aria-controls="contact" aria-selected="false">Payment Details</a>
-                    </li>
+                    </li> --}}
                 </ul>
-                <form action="#">
-                    @csrf
-                    <div class="tab-content border-0 text-mgreen pb-0" id="myTabContent3">
-                        <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-content border-0 text-mgreen pb-0" id="myTabContent3">
+                    <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab">
+                        <form action="{{ route('company.profile.update') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="container">
                                 <div class="row">
+                                    <input type="hidden" name="from" value="1">
                                     <div class="col-lg-3 text-center" style="border-right: 1px solid lightgray">
                                         <div class="picture-container">
                                             <div class="picture">
-                                                <img src="{{ $auth->image }}" class="picture-src" id="wizardPicturePreview"
-                                                    title="" />
+                                                <img src="{{ $user->profile_photo }}" class="picture-src"
+                                                    id="wizardPicturePreview" title="" />
                                                 <span><i class="icon-camera text-white fa-2x"></i></span>
                                                 <input type="file" name="image" id="wizard-picture"
                                                     aria-invalid="false" class="valid" accept="image/*" />
@@ -175,7 +175,7 @@
                                             <h5 class=""></h5>
                                         </div>
                                         <div class="name-container">
-                                            <h5 class="bold text-mgreen">{{ $auth->name }} <span class="icon-user"></span>
+                                            <h5 class="bold text-mgreen">{{ $user->name }} <span class="icon-user"></span>
                                             </h5>
                                         </div>
                                     </div>
@@ -187,47 +187,64 @@
                                             <label for="password">Compnay Name</label>
                                             <div class="input-group show-hide-password">
                                                 <input class="form-input" name="company_name"
-                                                    placeholder="Enter Company Name" type="text" value="Elizabeth Holmes"
+                                                    placeholder="Enter Company Name" type="text"
+                                                    value="{{ $user->company ? $user->company->company_name : null }}"
                                                     required>
                                             </div>
                                         </div>
                                         <div class="form-group mt-1">
                                             <label for="password">Email / Phone number</label>
                                             <div class="input-group show-hide-password">
-                                                <input class="form-input" name="email" placeholder="Enter Company Name"
-                                                    type="text" value="example@company.com" required>
+                                                <input class="form-input" name="" placeholder="Enter Company Name"
+                                                    type="text" value="{{ $user->email }}" required disabled>
                                             </div>
                                         </div>
                                         <div class="form-group mt-1">
                                             <label for="password">New Password</label>
                                             <div class="input-group show-hide-password">
-                                                <input class="form-input" name="email" placeholder="Enter Company Name"
-                                                    type="password" value="11111111" required>
+                                                <input class="form-input" name="password"
+                                                    placeholder="Enter Password (optional)" type="password" value="">
                                             </div>
                                         </div>
                                         <div class="form-group mt-1">
                                             <label for="password">Confirm Password</label>
                                             <div class="input-group show-hide-password">
-                                                <input class="form-input" name="email" placeholder="Enter Company Name"
-                                                    type="password" value="11111111" required>
+                                                <input class="form-input" name="confirm_password"
+                                                    placeholder="Please confirm your password" type="password"
+                                                    value="">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mt-1">
-                                <button class="btn btn-primary bg-mblue text-white btn-block btn-small rounded-0">Save
+                                <button type="submit"
+                                    class="btn btn-primary bg-mblue text-white btn-block btn-small rounded-0">Save
                                     changes</button>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab">
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab">
+                        <form action="{{ route('company.profile.update') }}" method="POST">
+                            @csrf
                             <div class="container">
                                 <h4 class="bold">Add discription</h4>
 
                                 <div class="description p-3"
                                     style="border: 1px solid lightgray; border-top: 0px; border-bottom: 2px solid #0A2FB6">
-                                    <p>Home inspections are easy when you start with WebsiteName Home Inspections. Home inspections are crucial when you are considering purchasing real estate and can also be a good idea if you are selling a home. Suppose you are putting a home on the market. In that case, WebsiteName Home Inspectors can give you an idea of any issues your home may have, providing the opportunity to make necessary repairs and get you top-dollar in the selling process.</p>
-                                    <p>You’ll likely find a home inspection report broken down as follows; An informational section that lists general details about the house, like its square footage and construction date A table of contents A general summary that includes major issues with the house Details about major home systems, their crucial components, and their operability. You can expect a home inspector to include information about:</p>
+                                    <textarea name="description" id="" cols="30" rows="10" class="form-control">{{ $user->company ? $user->company->description : null }}</textarea>
+                                    {{-- <p>Home inspections are easy when you start with WebsiteName Home Inspections. Home
+                                        inspections are crucial when you are considering purchasing real estate and can also
+                                        be a good idea if you are selling a home. Suppose you are putting a home on the
+                                        market. In that case, WebsiteName Home Inspectors can give you an idea of any issues
+                                        your home may have, providing the opportunity to make necessary repairs and get you
+                                        top-dollar in the selling process.</p>
+                                    <p>You’ll likely find a home inspection report broken down as follows; An informational
+                                        section that lists general details about the house, like its square footage and
+                                        construction date A table of contents A general summary that includes major issues
+                                        with the house Details about major home systems, their crucial components, and their
+                                        operability. You can expect a home inspector to include information about:</p> --}}
                                 </div>
                             </div>
                             <div class="space"></div>
@@ -235,96 +252,86 @@
                                 <button class="btn btn-primary bg-mblue text-white btn-block btn-small rounded-0">Save
                                     changes</button>
                             </div>
-                        </div>
-                        <div class="tab-pane fade w-lg-75 m-auto" id="contact3" role="tabpanel"
-                            aria-labelledby="contact-tab">
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade w-lg-75 m-auto" id="contact3"
+                        role="tabpanel"aria-labelledby="contact-tab">
+                        <form action="{{ route('company.pricing.update') }}" method="POST">
+                            @csrf
                             <div class="container">
+                                <input type="hidden" name="from" value="2">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <p>
-                                            <span>Price / Square Footage : <input type="text" class="form-control"
-                                                    value="500$/sf" placeholder="Price/Square Footage"></span>
+                                            <span>Price / Square Footage(per SF) : <input type="text"
+                                                    class="form-control"
+                                                    value="{{ $user->company ? $user->company->per_square : null }}"
+                                                    placeholder="Price/Square Footage"></span>
                                         </p>
                                     </div>
                                     <div class="col-lg-6">
-                                        <span>price / Year Built : <input type="text" class="form-control"
-                                                value="200$/Years" placeholder="price/Year Built"></span>
+                                        <span>price / Year Built(per Year) : <input type="text" class="form-control"
+                                                value="{{ $user->company ? $user->company->per_year : null }}"
+                                                placeholder="price/Year Built"></span>
                                     </div>
                                 </div>
                             </div>
                             <hr class="bold text-mgreen">
                             <div class="space"></div>
-                            <div class="row h-auto">
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-4 my-auto"><label for="">Home Size:</label></div>
-                                        <div class="col-8"><input type="text" class="form-control" value="200$">
+                            <div class="row h-auto category-row">
+                                <div class="row" style="border-bottom: 1px solid lightgray">
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-5 my-auto text-dark bold"><h5>Name</h5></div>
+                                            <div class="col-5"><h5 class="text-dark">Price({{currency()}})</h5></div>
+                                            <div class="col-2 text-left"><h5 class="text-dark">Selection</h5></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-5 my-auto text-dark bold"><h5>Name</h5></div>
+                                            <div class="col-5"><h5 class="text-dark">Price{{currency()}}</h5></div>
+                                            <div class="col-2"><h5 class="text-dark">Selection</h5></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-4 my-auto"><label for="">Condo:</label></div>
-                                        <div class="col-8"><input type="text" class="form-control" value="50$">
+                                @if ($user->company && $user->company->pricing)
+                                    @foreach ($user->company->pricing['item_name'] as $key=>$item)
+                                        <div class="col-lg-6 mt-2">
+                                            <div class="row">
+                                                <div class="col-5 my-auto"><input type="text" class="form-control" name="item_name[]" value="{{$item}}"></div>
+                                                <div class="col-5"><input type="text" name="item_price[]" class="form-control"
+                                                        value="{{ $user->company->pricing['item_price'][$key] }}">
+                                                </div>
+                                                <div class="col-2 mt-2"><input type="checkbox" class="form-check-input" name="item_selection[]" {{ (isset($user->company->pricing['item_selection'][$key]) && $user->company->pricing['item_selection'][$key] == 'on') ? 'checked' : null }}></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-1">
-                                    <div class="row">
-                                        <div class="col-4 my-auto"><label for="">Townhouse:</label></div>
-                                        <div class="col-8"><input type="text" class="form-control" value="100$">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-1">
-                                    <div class="row">
-                                        <div class="col-4 my-auto"><label for="">Age Fee:</label></div>
-                                        <div class="col-8"><input type="text" class="form-control" value="70$">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-1">
-                                    <div class="row">
-                                        <div class="col-4 my-auto"><label for="">Pool or Spa:</label></div>
-                                        <div class="col-8"><input type="text" class="form-control" value="50$">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-1">
-                                    <div class="row">
-                                        <div class="col-4 my-auto"><label for="">Trip Charge:</label></div>
-                                        <div class="col-8"><input type="text" class="form-control" value="20$">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-1">
-                                    <div class="row">
-                                        <div class="col-4 my-auto"><label for="">Termite:</label></div>
-                                        <div class="col-8"><input type="text" class="form-control" value="30$">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-1">
-                                    <div class="row">
-                                        <div class="col-4 my-auto"><label for="">Re-Inspection: </label></div>
-                                        <div class="col-8"><input type="text" class="form-control" value="800$">
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                            <div class="row">
+                                <div class="space"></div>
                                 <div class="mt-2">
-                                    <p class="">Click to <a href="#" data-bs-target="#add-category" data-bs-toggle="modal" ><strong class="text-mblue">Add<i
+                                    <p class="">Click to <a href="#" data-bs-target="#add-category"
+                                            data-bs-toggle="modal"><strong class="text-mblue">Add<i
                                                     class="icon-plus-circle fa-1x"></i></strong></a> more category...</p>
                                 </div>
+                                <div class="form-group mt-1">
+                                    <button class="btn btn-primary bg-mblue text-white btn-block btn-small rounded-0">Save
+                                        changes</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
         <div class="space"></div>
     </section>
 
-    <div class="modal fade" id="add-category" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="add-category" tabindex="-1" role="modal" aria-labelledby="modal-label"
+        aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -337,16 +344,18 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-4"><label for="">Category name :</label></div>
-                                    <div class="col-8"><input type="text" value="Pool or Spa" class="form-control"></div>
+                                    <div class="col-8"><input type="text" value="" id="new-item" name="item_name[]" class="form-control">
+                                    </div>
                                     <div class="col-4 mt-1"><label for="">Set Price :</label></div>
-                                    <div class="col-8 mt-1"><input type="text" value="200$" class="form-control"></div>
+                                    <div class="col-8 mt-1"><input type="text" id="new-item-price" name="item_price[]" value="" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-mblue btn-block btn-small rouded-0">Save</button>
+                    <button type="button" class="btn btn-primary bg-mblue btn-block btn-small rouded-0 save-new-item" class="btn-close" data-bs-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
@@ -368,5 +377,21 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+        $('.save-new-item').on('click', function(){
+            console.log('addNewItem');
+            let newItemName = $('#new-item').val();
+            let newItemPrice = $('#new-item-price').val();
+            let html = '<div class="col-lg-6 mt-2">\
+                                            <div class="row">\
+                                                <div class="col-5 my-auto"><input type="text" class="form-control" name="item_name[]" value="'+newItemName+'"></div>\
+                                                <div class="col-5"><input type="text" name="item_price[]" class="form-control"\
+                                                        value="'+newItemPrice+'">\
+                                                </div>\
+                                                <div class="col-2 mt-2"><input type="checkbox" class="form-check-input" name="item_selection[]"></div>\
+                                            </div>\
+                                        </div>';
+            $('.category-row').append(html);
+        })
     </script>
 @endsection

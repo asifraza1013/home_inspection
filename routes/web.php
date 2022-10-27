@@ -43,6 +43,8 @@ Route::post('/registrations', [HomeController::class, 'manuallRegistrations'])->
 */
 Route::group(['prefix' => 'user'], function () {
     Route::get('/profile', [UserController::class, 'profileIndex'])->name('user.profile');
+    Route::post('/profile', [UserController::class, 'updateCompanyProfile'])->name('company.profile.update');
+    Route::post('/pricing', [UserController::class, 'updateCompanyPricing'])->name('company.pricing.update');
 });
 
 // Auth::routes(['verify'=>false]);
@@ -82,7 +84,10 @@ Route::group(['middleware' => ['auth','verified']], function () {
         Route::get('/dashboard', 'DashboardController@userDashboard')->name('user.dashboard');
     });
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/dashboard', 'DashboardController@inspectorDashboard')->name('admin.dashboard');
+        Route::get('/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
+    });
+    Route::group(['prefix' => 'super_admin'], function () {
+        Route::get('/dashboard', 'DashboardController@superAdminDashboard')->name('super.admin.dashboard');
     });
 
     // admin routes

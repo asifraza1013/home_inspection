@@ -208,12 +208,12 @@
                     </a>
                     <div class="dropdown-menu  dropdown-menu-right ">
                         <div class="dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">Welcome!</h6>
+                            <h6 class="text-overflow m-0">Welcome!  {{ auth()->user()->name }}</h6>
                         </div>
-                        <a href="{{ route('profile.edit', auth()->user()) }}" class="dropdown-item">
+                        {{-- <a href="{{ route('profile.edit', auth()->user()) }}" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>My profile</span>
-                        </a>
+                        </a> --}}
                         {{-- @can('settings.update')
 
                         <a href="{{ route('settings.index') }}" class="dropdown-item">

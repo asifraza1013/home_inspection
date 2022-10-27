@@ -70,6 +70,7 @@ class RolePermissionSeeder extends Seeder
             'email' => 'user@email.com',
             'password' => 'admin',
             'status' => true,
+            'type'=> 3,
             'email_verified_at' => now(),
         ]);
         $user->assignRole($role);
@@ -99,6 +100,7 @@ class RolePermissionSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => 'admin',
             'status' => true,
+            'type'=> 2,
             'email_verified_at' => now(),
         ]);
         $inspector->assignRole($adminRole);

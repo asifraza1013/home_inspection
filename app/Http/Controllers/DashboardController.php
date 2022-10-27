@@ -6,18 +6,26 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function userDashboard()
+    public function superAdminDashboard()
     {
-        $title = 'User Dashboard';
-        return view('dashboards.user_dashbaord', compact([
+        $title = 'Super Admin Dashboard';
+        return view('dashboards.super_admin_dashboard', compact([
             'title',
         ]));
     }
 
-    public function inspectorDashboard()
+    public function adminDashboard()
     {
-        $title = 'Inspector Dashboard';
+        $title = 'Admin Dashboard/Compnies Dashboard';
         return view('dashboards.admin_dashboard', compact([
+            'title',
+        ]));
+    }
+
+    public function userDashboard()
+    {
+        $title = 'User Dashboard';
+        return view('dashboards.user_dashbaord', compact([
             'title',
         ]));
     }

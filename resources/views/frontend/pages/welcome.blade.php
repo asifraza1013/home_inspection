@@ -159,11 +159,10 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <select name="" id="" class="form-control">
-                                        <option value="" disabled selected>Please select --</option>
-                                        <option value="">Sun Home inspection</option>
-                                        <option value="">Sun Home inspection</option>
-                                        <option value="">Sun Home inspection</option>
-                                        <option value="">Sun Home inspection</option>
+                                        <option value="" disabled selected>-- Select Company --</option>
+                                        @foreach ($compnies as $company)
+                                            <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-lg-6">

@@ -30,8 +30,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Inspection Requests</h5>
-                            <span class="h2 font-weight-bold mb-0">7</span>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Total Compnies</h5>
+                            <span class="h2 font-weight-bold mb-0">2000</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -74,7 +74,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Total Clients</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Total Users</h5>
                             <span class="h2 font-weight-bold mb-0">400</span>
                         </div>
                         <div class="col-auto">

@@ -30,14 +30,12 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="input-group h-100">
-                                <select name="" id="" class="form-control">
-                                    <option value="" disabled selected>Please select --</option>
-                                    <option value="">Sun Home inspection</option>
-                                    <option value="">Sun Home inspection</option>
-                                    <option value="">Sun Home inspection</option>
-                                    <option value="">Sun Home inspection</option>
-                                </select>
-                                {{-- <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span> --}}
+                                    <select name="" id="" class="form-control">
+                                        <option value="" disabled selected>-- Select Company --</option>
+                                        @foreach ($compnies as $company)
+                                            <option value="{{ $company->id }}">{{ $company->company_name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -45,14 +43,7 @@
                             </div>
                             <div class="col-lg-6 mt-1">
                                 <div class="input-group h-100">
-                                    <select name="" id="" class="form-control">
-                                        <option value="" disabled selected>Please select --</option>
-                                        <option value="">500</option>
-                                        <option value="">500</option>
-                                        <option value="">500</option>
-                                        <option value="">500</option>
-                                    </select>
-                                    {{-- <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span> --}}
+                                    <input type="text" class="form-control" id="total-sqare" name="total_sqare" value="" placeholder="Total area in squarefit">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -62,12 +53,10 @@
                                 <div class="input-group h-100">
                                     <select name="" id="" class="form-control">
                                         <option value="" disabled selected>Please select --</option>
-                                        <option value="">10 Years</option>
-                                        <option value="">10 Years</option>
-                                        <option value="">10 Years</option>
-                                        <option value="">10 Years</option>
+                                        @foreach (config('constants.year_built') as $item)
+                                        <option value="{{$item}}">{{$item}} Year</option>
+                                        @endforeach
                                     </select>
-                                    {{-- <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input" id="vehicle1" name="vehicle1" value="Bike"></span> --}}
                                 </div>
                             </div>
                         </div>

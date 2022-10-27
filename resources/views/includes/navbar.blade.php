@@ -33,8 +33,7 @@
                     <!-- Nav items -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('home*') ? 'active' : '' }}"
-                                href="{{ route('home') }}">
+                            <a class="nav-link {{ request()->is('home*') ? 'active' : '' }}" href="{{ route('home') }}">
                                 <i class="ni ni-shop text-primary"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
@@ -207,22 +206,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}"
-                                href="#">
+                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}" href="#">
                                 <i class="ni ni-archive-2 text-primary"></i>
                                 <span class="nav-link-text">Quick Quote</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}"
-                                href="#">
+                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}" href="#">
                                 <i class="ni ni-tag text-primary"></i>
                                 <span class="nav-link-text">Inspection Request</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}"
-                                href="#">
+                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}" href="#">
                                 <i class="ni ni-time-alarm text-primary"></i>
                                 <span class="nav-link-text">Inspection Schedule</span>
                             </a>
@@ -332,50 +328,47 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->is('admin.dashboard*') ? 'active' : '' }}"
                                 href="#">
                                 <i class="ni ni-paper-diploma text-primary"></i>
                                 <span class="nav-link-text">Subscription Plan</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('profile*') ? 'active' : '' }}"
-                                href="{{ route('profile.edit', $auth->id) }}">
+                            <a class="nav-link {{ request()->is('user.profile*') ? 'active' : '' }}"
+                                href="{{ route('user.profile', $auth->id) }}">
                                 <i class="ni ni-user-run text-primary"></i>
                                 <span class="nav-link-text">Profile Settings</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('admin.quote*') ? 'active' : '' }}"
-                                href="#settings" data-toggle="collapse" role="button" aria-expanded="true"
-                                aria-controls="settings">
+                            <a class="nav-link {{ request()->is('admin.quote*') ? 'active' : '' }}" href="#settings"
+                                data-toggle="collapse" role="button" aria-expanded="true" aria-controls="settings">
                                 <i class="ni ni-settings-gear-65 text-primary"></i>
                                 <span class="nav-link-text">Settings</span>
                             </a>
                             <div class="collapse" id="settings">
                                 <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a href="{{ route('admin.quote.options') }}" class="nav-link"><span
                                                 class="sidenav-mini-icon">D </span><span class="sidenav-normal">Quote
                                                 Options</span></a>
+                                    </li> --}}
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->is('permissions*') ? 'active' : '' }}"
+                                            href="{{ route('permissions.index') }}" class="nav-link"><span
+                                                class="sidenav-mini-icon">D </span><span class="sidenav-normal">Manage
+                                                Permissions</span>
+                                        </a>
                                     </li>
-                                    @canany(['2-view-permission', '2-create-permission'])
-                                        <li class="nav-item">
-                                            <a class="nav-link {{ request()->is('permissions*') ? 'active' : '' }}"
-                                                href="{{ route('permissions.index') }}"  class="nav-link"><span
-                                                class="sidenav-mini-icon">D </span><span class="sidenav-normal">Manage Permissions</span>
-                                            </a>
-                                        </li>
-                                    @endcan
-                                    @canany(['2-view-role', '2-create-role'])
-                                        <li class="nav-item">
-                                            <a class="nav-link {{ request()->is('roles*') ? 'active' : '' }}"
-                                                href="{{ route('roles.index') }}" class="nav-link"><span
-                                                class="sidenav-mini-icon">D </span><span class="sidenav-normal">Manage Roles</span>
-                                            </a>
-                                        </li>
-                                    @endcan
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->is('roles*') ? 'active' : '' }}"
+                                            href="{{ route('roles.index') }}" class="nav-link"><span
+                                                class="sidenav-mini-icon">D </span><span class="sidenav-normal">Manage
+                                                Roles</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

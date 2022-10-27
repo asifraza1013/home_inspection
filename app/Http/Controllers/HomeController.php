@@ -31,10 +31,11 @@ class HomeController extends Controller
         toast('Login Successfull!','success');
         $user = Auth::user();
         $userRole = $user->getRoleNames();
-        if($user->type != 1) return redirect(route('user.profile'));
+        // if($user->type == 2) return redirect(route('user.profile'));
+        if($userRole[0] == 'super-admin') return redirect(route('super.admin.dashboard'));
         if($userRole[0] == 'user') return redirect(route('user.dashboard'));
-        if($userRole[0] == 'admin') return redirect(route('admin.dashboard'));
-        return view('home');
+        else return redirect(route('admin.dashboard'));
+        // return view('home');
     }
 
     /**

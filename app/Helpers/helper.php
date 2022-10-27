@@ -61,4 +61,12 @@ if (!function_exists('addDefaultQuotation')) {
         if($quotationOption) return true;
         else return false;
     }
+
+}
+
+if (!function_exists('currency')) {
+    function currency($amount = null)
+    {
+        return '$'.$amount;
+    }
 }

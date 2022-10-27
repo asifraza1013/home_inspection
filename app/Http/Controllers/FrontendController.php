@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CompniesDetail;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -36,8 +37,10 @@ class FrontendController extends Controller
     public function getQuote()
     {
         $title = 'Get Quotation';
+        $compnies = CompniesDetail::all();
         return view('frontend.pages.quotation', compact([
-            'title'
+            'compnies',
+            'title',
         ]));
     }
 
@@ -45,7 +48,7 @@ class FrontendController extends Controller
     {
         $title = 'Pricing Plans';
         return view('frontend.pages.pricing_plan', compact([
-            'title'
+            'title',
         ]));
     }
 
