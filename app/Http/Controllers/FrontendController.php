@@ -11,7 +11,7 @@ class FrontendController extends Controller
     public function index()
     {
         $title = 'Landing Page';
-        $compnies = CompniesDetail::all();
+        $compnies = CompniesDetail::all()->keyBy('id');
         return view('frontend.pages.welcome', compact([
             'title',
             'compnies',
@@ -34,12 +34,13 @@ class FrontendController extends Controller
         ]));
     }
 
-    public function getQuote()
+    public function getQuote($selectedCompany = null)
     {
         $title = 'Get Quotation';
-        $compnies = CompniesDetail::all();
+        $compnies = CompniesDetail::all()->keyBy('id');
         return view('frontend.pages.quotation', compact([
             'compnies',
+            'selectedCompany',
             'title',
         ]));
     }
@@ -52,9 +53,13 @@ class FrontendController extends Controller
         ]));
     }
 
-    // public function companiesList()
-    // {
-    //     $title = 'Companies List';
-    //     return
-    // }
+    public function companiesList()
+    {
+        $title = 'Companies List';
+        $compnies = CompniesDetail::with(['user'])->get();
+        return view('company.index', compact([
+            'compnies',
+            'title',
+        ]));
+    }
 }

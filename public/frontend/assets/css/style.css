@@ -6862,6 +6862,11 @@ body[data-bg-image] { background-attachment: fixed; background-position: top cen
     display: flex !important; }
   .d-print-inline-flex {
     display: inline-flex !important; } }
-
+    .cirlcle{
+        background: white;
+        padding: 1px 8px;
+        margin-right: 10px;
+        border-radius: 50%;
+    }
 /* .d-none {
     display: none !important; } */

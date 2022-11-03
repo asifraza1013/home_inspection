@@ -30,8 +30,9 @@ Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 Route::get('/faq', [FrontendController::class, 'faqIndex'])->name('faq');
 Route::get('/contact_us', [FrontendController::class, 'contactusIndex'])->name('contactus');
 Route::post('/contact_us', [ContactusController::class, 'storeContactMessage'])->name('store.contact.us');
-Route::get('/get_quotation', [FrontendController::class, 'getQuote'])->name('quotation');
+Route::get('/get_quotation/{company?}', [FrontendController::class, 'getQuote'])->name('quotation');
 Route::get('/pricing_plans', [FrontendController::class, 'pricingPlanIndex'])->name('pricingplan');
+Route::get('/companies_list', [FrontendController::class, 'companiesList'])->name('companies.list');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('/registrations', [HomeController::class, 'manuallRegistrations'])->name('user.manual.registrations');

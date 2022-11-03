@@ -64,7 +64,7 @@
                             @auth
                             <nav>
                                 <ul>
-                                    <li><a href="{{ route('pricingplan') }}">Companies</a></li>
+                                    <li><a href="{{ route('companies.list') }}">Companies</a></li>
                                     <li><a href="{{ route('quotation') }}">Quik Quote</a></li>
                                     <li><a href="{{ route('welcome') }}">Reports</a></li>
                                     <li><a href="{{ route('welcome') }}">Tech Support</a></li>
