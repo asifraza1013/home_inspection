@@ -24,16 +24,17 @@
             <div class="col-lg-6">
                 <h3 class="bold text-dgreen">Get in touch and let us know how we can help:</h3>
 
-                <form class="form-validate">
+                <form class="form-validate" method="POST" action="{{ route('store.contact.us') }}">
+                    @csrf
                     <div class="form-group ">
                         <div class="input-group show-hide-password">
-                            <input class="form-control" name="password" placeholder="Enter Your Name" type="text"
+                            <input class="form-control" name="name" placeholder="Enter Your Name" type="text"
                                 required="">
                         </div>
                     </div>
                     <div class="form-group ">
                         <div class="input-group show-hide-password">
-                            <input class="form-control" name="password" placeholder="Enter Your email address" type="email"
+                            <input class="form-control" name="email" placeholder="Enter Your email address" type="email"
                                 required="">
                         </div>
                     </div>

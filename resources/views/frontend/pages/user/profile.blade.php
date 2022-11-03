@@ -304,7 +304,7 @@
                                                 <div class="col-5"><input type="text" name="item_price[]" class="form-control"
                                                         value="{{ $user->company->pricing['item_price'][$key] }}">
                                                 </div>
-                                                <div class="col-2 mt-2"><input type="checkbox" class="form-check-input" name="item_selection[]" {{ (isset($user->company->pricing['item_selection'][$key]) && $user->company->pricing['item_selection'][$key] == 'on') ? 'checked' : null }}></div>
+                                                <div class="col-2 mt-2"><input type="checkbox" class="form-check-input" name="item_selection[]" {{(in_array($item, $user->company->pricing['item_selection'])) ? 'checked' : null }} value="{{$item}}"></div>
                                             </div>
                                         </div>
                                     @endforeach
@@ -388,7 +388,7 @@
                                                 <div class="col-5"><input type="text" name="item_price[]" class="form-control"\
                                                         value="'+newItemPrice+'">\
                                                 </div>\
-                                                <div class="col-2 mt-2"><input type="checkbox" class="form-check-input" name="item_selection[]"></div>\
+                                                <div class="col-2 mt-2"><input type="checkbox" class="form-check-input" name="item_selection[]" value="'+newItemName+'"></div>\
                                             </div>\
                                         </div>';
             $('.category-row').append(html);

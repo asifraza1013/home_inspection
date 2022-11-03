@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -28,6 +29,7 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 Route::get('/faq', [FrontendController::class, 'faqIndex'])->name('faq');
 Route::get('/contact_us', [FrontendController::class, 'contactusIndex'])->name('contactus');
+Route::post('/contact_us', [ContactusController::class, 'storeContactMessage'])->name('store.contact.us');
 Route::get('/get_quotation', [FrontendController::class, 'getQuote'])->name('quotation');
 Route::get('/pricing_plans', [FrontendController::class, 'pricingPlanIndex'])->name('pricingplan');
 Route::get('/home', [HomeController::class, 'index'])->name('home');

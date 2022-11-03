@@ -11,7 +11,7 @@ class FrontendController extends Controller
     public function index()
     {
         $title = 'Landing Page';
-        $compnies = User::where('type', 2)->where('status', 1)->get();
+        $compnies = CompniesDetail::all();
         return view('frontend.pages.welcome', compact([
             'title',
             'compnies',
