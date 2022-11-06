@@ -29,7 +29,7 @@
     </div>
     <div class="col-lg-6 mt-1">
         <div class="input-group h-100">
-            <select name="" id="total-years" class="form-control">
+            <select name="total_years" id="total-years" class="form-control">
                 <option value="" disabled selected>Please select --</option>
                 @foreach (config('constants.year_built') as $item)
                     <option value="{{ $item }}">{{ $item }} Year</option>
@@ -41,18 +41,20 @@
 <hr class="text-dgreen">
 <div class="row company-detail-block">
     @foreach ($compnies[$firstIndex]->pricing['item_name'] as $key => $item)
+        @php
+            $checkBox = in_array($item, $compnies[$firstIndex]->pricing['item_selection']) ? true : false;
+        @endphp
         <div class="col-lg-6">
             <label for="">{{ $item }}</label>
         </div>
         <div class="col-lg-6 mt-1">
             <div class="input-group h-100">
-                <input type="text" class="form-control" name="" placeholder=""
+                <input type="text" class="form-control" name="item_price[]" placeholder=""
                     value="{{ $compnies[$firstIndex]->pricing['item_price'][$key] }}" readonly>
                 <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox"
                         class="form-check-input pricing-checkbox"
-                        check-price="{{ $compnies[$firstIndex]->pricing['item_price'][$key] }}" name="item_selection[]"
-                        {{ in_array($item, $compnies[$firstIndex]->pricing['item_selection']) ? 'checked disabled' : null }}
-                        value="{{ $item }}"></span>
+                        check-price="{{ $compnies[$firstIndex]->pricing['item_price'][$key] }}" name="item_selection[]" {{ $checkBox ? 'checked ' : null }}
+                        value="{{ $key }}" onclick="return {{ $checkBox ? 'false' : true }};"></span>
             </div>
         </div>
     @endforeach
@@ -106,14 +108,14 @@
             // let checked = null
             $.map(allCompanies[selectedCompany].pricing['item_name'], function (values, index) {
                 console.log(jQuery.inArray(values, allCompanies[selectedCompany].pricing['item_selection']));
-                let checked = (jQuery.inArray(values, allCompanies[selectedCompany].pricing['item_selection']) >= 0) ? "checked disabled" : null
+                let checked = (jQuery.inArray(values, allCompanies[selectedCompany].pricing['item_selection']) >= 0) ? "checked onclick='return false;'" : null
                 console.log('cheked', checked);
                 html +=    '<div class="col-lg-6">\
                         <label for="">'+values+'</label>\
                     </div>\
                     <div class="col-lg-6 mt-1">\
                         <div class="input-group h-100">\
-                            <input type="text" class="form-control" name="" placeholder="" value="'+allCompanies[selectedCompany].pricing['item_price'][index]+'" readonly>\
+                            <input type="text" class="form-control" name="item_price[]" placeholder="" value="'+allCompanies[selectedCompany].pricing['item_price'][index]+'" readonly>\
                             <span class="my-auto ml-2" style="margin-left: 10px"><input type="checkbox" class="form-check-input pricing-checkbox" check-price=" '+allCompanies[selectedCompany].pricing['item_price'][index]+'" name="item_selection[]" '+checked+' value="'+values+'"></span>\
                         </div>\
                     </div>'

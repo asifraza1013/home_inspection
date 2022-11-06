@@ -49,10 +49,12 @@
 
             <div class="input-group">
                 <div class="form-outline w-75">
-                    <input type="search" id="form1" class="form-control rounded-0"
-                        placeholder="Search best company for you" />
+                    <form action="{{ route('companies.list') }}" id="company-search-form">
+                        <input type="search" id="form1" name="search" class="form-control rounded-0"
+                            placeholder="Search best company for you" />
+                    </form>
                 </div>
-                <button type="button" class="btn btn-primary rounded-0" style="width: 15%">
+                <button type="button" class="btn btn-primary rounded-0 search-company" style="width: 15%">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
@@ -60,24 +62,40 @@
             <div class="companies-list mt-3 mt-lg-5">
                 <div class="row">
                     @foreach ($compnies as $item)
-                    <div class="col-lg-10 mt-2 mt-lg-4">
-                        <div class="row">
-                            <div class="col-2"><img class="w-100" src="{{ ($item->user->profile_photo) ? $item->user->profile_photo : asset('frontend/assets/images/about/profile 1.png') }}" alt=""></div>
-                            <div class="col-6">
-                                <h2>{{ $item->company_name }}</h2>
-                                <p>{!! Str::limit($item->description, 200) !!}</p>
+                        <div class="col-lg-10 mt-2 mt-lg-4">
+                            <div class="row">
+                                <div class="col-2"><img class="w-100"
+                                        src="{{ $item->user->profile_photo ? $item->user->profile_photo : asset('frontend/assets/images/about/profile 1.png') }}"
+                                        alt=""></div>
+                                <div class="col-6">
+                                    <h2><a class="link" href="{{ route('companies.detail', Crypt::encrypt($item->id)) }}">{{ $item->company_name }}</a></h2>
+                                    <p>{!! Str::limit($item->description, 200) !!}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 m-auto">
-                        <div class="group">
-                            <a href="{{ route('quotation', $item->id) }}" class="btn btn-primary btn-small rounded-0 btn-block">Get Quote</a>
-                            <button class="btn btn-primary btn-small rounded-0 btn-block">Hire</button>
+                        <div class="col-lg-2 m-auto">
+                            <div class="group">
+                                <a href="{{ route('quotation', $item->id) }}"
+                                    class="btn btn-primary btn-small rounded-0 btn-block">Get Quote</a>
+                                <a href="{{ route('companies.hiring.form', Crypt::encrypt($item->id)) }}" class="btn btn-primary btn-small rounded-0 btn-block">Hire</a>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
+            <div class="list mt-lg-5 mt-2">
+                {{ $compnies->links() }}
+            </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function () {
+        $('.search-company').on('click', function () {
+            $('#company-search-form').submit();
+        })
+    });
+</script>
 @endsection

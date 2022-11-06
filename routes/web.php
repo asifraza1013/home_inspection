@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyManagementController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
@@ -33,6 +34,10 @@ Route::post('/contact_us', [ContactusController::class, 'storeContactMessage'])-
 Route::get('/get_quotation/{company?}', [FrontendController::class, 'getQuote'])->name('quotation');
 Route::get('/pricing_plans', [FrontendController::class, 'pricingPlanIndex'])->name('pricingplan');
 Route::get('/companies_list', [FrontendController::class, 'companiesList'])->name('companies.list');
+Route::get('/company_detail/{id}', [FrontendController::class, 'companyDetail'])->name('companies.detail');
+Route::get('/company_hiring/{id}', [FrontendController::class, 'hiringForm'])->name('companies.hiring.form');
+Route::post('/company_hiring', [FrontendController::class, 'userHiringDetail'])->name('companies.hiring.form.submit');
+Route::get('/company_quotation/{token}', [FrontendController::class, 'getCompanyQuotationForm'])->name('companies.quotation');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('/registrations', [HomeController::class, 'manuallRegistrations'])->name('user.manual.registrations');
@@ -56,6 +61,10 @@ Route::group(['prefix' => 'user'], function () {
 Route::group(['middleware' => ['auth','verified']], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
+
+
+    Route::post('create_order', [CompanyManagementController::class, 'createOrder'])->name('company.create.order');
+
 
     Route::get('/components', function(){
         return view('components');

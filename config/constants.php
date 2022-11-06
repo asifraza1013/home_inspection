@@ -27,4 +27,11 @@ return [
         '14' => '14',
         '15' => '15',
     ],
+    'order_status' => [
+        1 =>"JustCreated",
+        2=> "Scheduled",
+        3=> "InProgress",
+        4=> "Canceled",
+        5=> "Completed"
+    ]
 ];

@@ -19,10 +19,10 @@ class UserController extends Controller
     public function __construct()
     {
 
-        $this->middleware('permission:view-user')->except(['profile', 'profileUpdate']);
-        $this->middleware('permission:create-user', ['only' => ['create','store']]);
-        $this->middleware('permission:update-user', ['only' => ['edit','update']]);
-        $this->middleware('permission:destroy-user', ['only' => ['destroy']]);
+        // $this->middleware('permission:view-user')->except(['profile', 'profileUpdate']);
+        // $this->middleware('permission:create-user', ['only' => ['create','store']]);
+        // $this->middleware('permission:update-user', ['only' => ['edit','update']]);
+        // $this->middleware('permission:destroy-user', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
