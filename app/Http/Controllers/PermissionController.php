@@ -28,7 +28,7 @@ class PermissionController extends Controller
             ->log('view');
         $title = 'Manage Permissions';
         $auth = Auth::user();
-        $permissions = Permission::where('permission_for', $auth->type)->paginate(setting('record_per_page', 15));
+        $permissions = Permission::paginate(setting('record_per_page', 15));
         return view('permissions.index', compact('permissions','title'));
     }
 

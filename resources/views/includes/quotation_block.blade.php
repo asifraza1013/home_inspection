@@ -9,8 +9,10 @@
         <div class="input-group h-100">
             <select name="company" id="select-company" class="form-control">
                 @foreach ($compnies as $key => $company)
-                    <option co-key="{{ $key }}" {{($firstIndex == $company->id) ? 'selected' : null}} value="{{ $company->id }}">{{ $company->company_name }}
-                    </option>
+                @if ($company->pricing)
+                <option co-key="{{ $key }}" {{($firstIndex == $company->id) ? 'selected' : null}} value="{{ $company->id }}">{{ $company->company_name }}
+                </option>
+                @endif
                 @endforeach
             </select>
         </div>

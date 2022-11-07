@@ -1,5 +1,6 @@
 <?php
 
+use App\CompniesDetail;
 use App\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -19,32 +20,35 @@ class RolePermissionSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
         // create permissions
         $permissions = [
-            'update-settings',
             'view-user',
             'create-user',
             'update-user',
             'destroy-user',
+
+            'view-plan',
+            'create-plan',
+            'update-plan',
+            'destroy-plan',
+
             'view-role',
-            'view-permission',
             'create-role',
-            'create-permission',
-            'update-role',
-            'update-permission',
             'destroy-role',
-            'destroy-permission',
-            'view-activity-log',
-            // 'view-category',
-            // 'create-category',
-            // 'update-category',
-            // 'destroy-category',
-            // 'view-post',
-            // 'create-post',
-            // 'update-post',
-            // 'destroy-post',
+            'update-role',
+
+            'order-list',
+            'approve-order',
+
+            'superadmin-dashboard',
+            'admin-dashboard',
+            'user-dashboard',
+
+            'manage-company-profile',
+            'manage-company-profile',
         ];
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
+
         // Create Super user & role
         $admin= Role::create(['name' => 'super-admin']);
         $admin->syncPermissions($permissions);
@@ -56,69 +60,67 @@ class RolePermissionSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        $usr->assignRole($admin);
-        $usr->syncPermissions($permissions);
-
-
-        // Create user & role
-        $role = Role::create(['name' => 'user']);
-        $role->givePermissionTo('update-settings');
-        $role->givePermissionTo('view-user');
-
-        $user = User::create([
-            'name'=> 'User',
-            'email' => 'user@email.com',
-            'password' => 'admin',
-            'status' => true,
-            'type'=> 3,
-            'email_verified_at' => now(),
-        ]);
-        $user->assignRole($role);
-
         $adminPermissions = [
             'view-user',
             'create-user',
             'update-user',
             'destroy-user',
             'view-role',
-            'view-permission',
-            'create-role',
-            'create-permission',
-            'update-role',
-            'update-permission',
-            'destroy-role',
-            'destroy-permission',
+            'admin-dashboard',
+            'manage-company-profile',
         ];
+        $usr->assignRole($admin);
+        $usr->syncPermissions($permissions);
 
-        // Create Super user & role
-        $adminRole= Role::create(['name' => 'admin']);
-        $adminRole->syncPermissions($permissions);
-
-        // Create user & role
-        $inspector = User::create([
+        // Create admin & role
+        $admin= Role::create(['name' => 'admin']);
+        $admin->syncPermissions($permissions);
+        $usr = User::create([
             'name'=> 'Admin',
             'email' => 'admin@admin.com',
             'password' => 'admin',
             'status' => true,
-            'type'=> 2,
+            'company_id' => 1, // create company
             'email_verified_at' => now(),
         ]);
-        $inspector->assignRole($adminRole);
-        $inspector->syncPermissions($adminPermissions);
 
-        // create default quote options
-        addDefaultQuotation($inspector->id);
-        // $inspector->givePermissionTo('update-settings');
-        // $inspector->givePermissionTo('view-user');
-        // $inspector->givePermissionTo('create-user');
-        // $inspector->givePermissionTo('update-user');
-        // $inspector->givePermissionTo('destroy-user');
-        // $inspector->givePermissionTo('view-role');
-        // $inspector->givePermissionTo('view-permission');
-        // $inspector->givePermissionTo('create-role');
-        // $inspector->givePermissionTo('update-role');
-        // $inspector->givePermissionTo('update-permission');
-        // $inspector->givePermissionTo('destroy-role');
-        // $inspector->givePermissionTo('destroy-role');
+        // create default company
+        $company = new CompniesDetail();
+        $company->company_name = 'admin';
+        $company->user_id = $usr->id;
+        $company->save();
+
+        $usr->company_id = $company->id;
+        $usr->update();
+
+        $usr->assignRole($admin);
+        $usr->syncPermissions($adminPermissions);
+
+        $userPermissions = [
+            'user-dashboard',
+        ];
+        $usr->assignRole($admin);
+        $usr->syncPermissions($permissions);
+
+        // Create admin & role
+        $admin= Role::create(['name' => 'user']);
+        $admin->syncPermissions($userPermissions);
+        $usr = User::create([
+            'name'=> 'User',
+            'email' => 'user@gmail.com',
+            'password' => 'admin',
+            'status' => true,
+            'email_verified_at' => now(),
+        ]);
+
+        $usr->assignRole($admin);
+        $usr->syncPermissions($userPermissions);
+
+
+        // create roels list for admin that can't be changed
+        Role::create(['name' => 'agent', 'role_for' =>2]);
+        Role::create(['name' => 'inspector', 'role_for' => 2]);
+        Role::create(['name' => 'viewer', 'role_for' => 2]);
+        Role::create(['name' => 'requestManager', 'role_for' => 2]);
     }
 }

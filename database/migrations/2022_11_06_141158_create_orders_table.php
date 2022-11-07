@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('inspection_date');
             $table->string('inspection_time');
             $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
             $table->string('contact_number');
             $table->string('city');
@@ -29,6 +30,7 @@ class CreateOrdersTable extends Migration
 
             $table->integer('user_id')->index();
             $table->integer('agent_id')->index()->nullable();
+            $table->integer('inspector_id')->index()->nullable();
             $table->integer('company_id')->index();
 
             $table->string('total_square');
@@ -43,6 +45,7 @@ class CreateOrdersTable extends Migration
             $table->string('admin_commission')->nullable();
 
             $table->boolean('is_report_generated')->default(false);
+            $table->boolean('admin_approved')->default(false);
             $table->integer('status')->default(1)->comment('1:JustCreated, 2:Scheduled, 3:InProgress, 4:Canceled, 5:Completed');
 
             $table->timestamps();

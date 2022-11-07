@@ -1,14 +1,38 @@
 <?php
 
 return [
-    'user_type' => [
-        1 => 'Normal User',
-        2 => 'Agent',
-        3 => 'Inspector',
+    // 'user_type' => [
+    //     1 => 'Normal User',
+    //     2 => 'Agent',
+    //     3 => 'Inspector',
+    // ],
+    // 'admin_roles' => [
+    //     2 => 'Agent',
+    //     3 => 'Inspector'
+    // ],
+    'role_for' => [
+        2 => 'admin'
     ],
-    'admin_roles' => [
-        2 => 'Agent',
-        3 => 'Inspector'
+    'admin' => 2,
+    'builtin_roles' => [
+        'admin',
+        'agent',
+        'inspector',
+        'viewer',
+        'requestManager',
+    ],
+    'admin_predefined_roles' => [
+        'agent',
+        'inspector',
+        'viewer',
+        'requestManager',
+    ],
+    'builtin_role_id' => [
+        'admin',
+        'agent',
+        'inspector',
+        'viewer',
+        'requestManager',
     ],
     'year_built' => [
         '1' => '1',

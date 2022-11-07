@@ -13,7 +13,7 @@ class FrontendController extends Controller
     {
         $title = 'Landing Page';
         $selectedCompany = null;
-        $compnies = CompniesDetail::all()->keyBy('id');
+        $compnies = CompniesDetail::whereNotNull('pricing')->get()->keyBy('id');
         return view('frontend.pages.welcome', compact([
             'compnies',
             'selectedCompany',
@@ -40,7 +40,7 @@ class FrontendController extends Controller
     public function getQuote($selectedCompany = null)
     {
         $title = 'Get Quotation';
-        $compnies = CompniesDetail::all()->keyBy('id');
+        $compnies = CompniesDetail::whereNotNull('pricing')->get()->keyBy('id');
         return view('frontend.pages.quotation', compact([
             'compnies',
             'selectedCompany',
@@ -59,7 +59,7 @@ class FrontendController extends Controller
     public function companiesList(Request $request)
     {
         $title = 'Companies List';
-        $compnies = CompniesDetail::with(['user']);
+        $compnies = CompniesDetail::whereNotNull('pricing')->with(['user']);
         if($request->search){
             $compnies = $compnies->where('company_name', 'like', '%' . $request->search . '%');
         }

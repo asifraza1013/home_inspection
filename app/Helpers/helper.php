@@ -70,3 +70,11 @@ if (!function_exists('currency')) {
         return '$'.$amount;
     }
 }
+
+if (!function_exists('adminRequest')) {
+    function adminRequest($userRole)
+    {
+        if(in_array($userRole, config('constants.builtin_role_id'))) return true;
+        else return false;
+    }
+}

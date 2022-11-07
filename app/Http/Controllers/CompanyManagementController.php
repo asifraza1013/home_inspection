@@ -6,11 +6,19 @@ use App\CompniesDetail;
 use App\Order;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 
 class CompanyManagementController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('permission:order-list', ['only' => ['orderList']]);
+    }
+
     public function createOrder(Request $request)
     {
         // dd($request->all());
@@ -29,7 +37,9 @@ class CompanyManagementController extends Controller
             return redirect()->back();
         }
 
+        $user = Auth::user();
         $userDetail = json_decode(base64_decode($request->token));
+        // dd($userDetail);
         $companyId = Crypt::decrypt($userDetail->company);
         $companyDetail = CompniesDetail::where('id', $companyId)->first();
         // dd($companyDetail->pricing);
@@ -56,10 +66,50 @@ class CompanyManagementController extends Controller
         $squareTotal = (float) $request->total_sqare *  (float) $companyDetail->per_square;
         $orderTotal = $servicesAmount + $yearsTotal + $squareTotal;
 
-        $agent = User::role('Agent')->inRandomOrder()->first();
-        dd($agent);
-        // $teachers = User::role('Teacher')->get(); inRandomOrder
+        $agent = User::where('company_id', $companyId)->role('agent')->inRandomOrder()->first();
 
         $order = New Order();
+        $order->inspection_date	= $userDetail->inspection_date;
+        $order->inspection_time	= $userDetail->inspection_time;
+        $order->first_name	= $userDetail->first_name;
+        $order->last_name	= $userDetail->last_name;
+        $order->email	= $userDetail->email;
+        $order->contact_number	= $userDetail->contact_number;
+        $order->city	= $userDetail->city;
+        $order->area = $userDetail->area;
+        $order->zip_code = $userDetail->zip_code;
+        $order->address = $userDetail->address;
+
+        $order->user_id = $user->id;
+
+        $order->agent_id = $agent->id;
+        $order->company_id = $companyId;
+
+        $order->total_square = $request->total_sqare;
+        $order->square_amount = $squareTotal;
+        $order->total_years = $request->total_years;
+        $order->year_amount = $yearsTotal;
+        $order->total = $orderTotal;
+        $order->item_selection = $selectedServices;
+        $order->item_prices = $servicesPrice;
+        $order->save();
+
+        // TODO: send notifications to agent, admin and superadmin
+
+        toast('Order Created success. We will get back to you soon. Thank you for using our services!','success');
+        return redirect(route('welcome'));
+    }
+
+    public function orderList(Request $request)
+    {
+        $title = 'Order List';
+        $order = Order::with(['agent', 'company']);
+        if($request->order == 'unapproved') $order = $order->where('admin_approved', true);
+        if($request->order == 'completed') $order = $order->where('status', 5); // completed orders
+        $orders =  $order->orderBy('created_at')->paginate(15);
+        return view('company.orders.index', compact([
+            'title',
+            'orders',
+        ]));
     }
 }
