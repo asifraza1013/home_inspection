@@ -89,7 +89,7 @@
         </div>
     </div>
 @endsection
-@push('scripts')
+@push('script')
     <script>
         jQuery(document).ready(function(){
             $('.delete').on('click', function(e){

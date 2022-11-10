@@ -45,6 +45,6 @@
     <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-confirm.min.js')}}"></script>
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
-    @yield('scripts')
+    @yield('script')
 </body>
 </html>

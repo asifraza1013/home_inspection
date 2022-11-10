@@ -139,10 +139,11 @@
                                     <div class="widget">
                                         <div class="widget-title">About</div>
                                         <ul class="list">
-                                            <li><a href="#">Quick Quote</a></li>
-                                            <li><a href="#">Companies</a></li>
+                                            <li><a href="{{ route('quotation') }}">Quick Quote</a></li>
+                                            <li><a href="{{ route('companies.list') }}">Companies</a></li>
+                                            <li><a href="{{ route('pricingplan') }}">Pricing Plan</a></li>
                                             <li><a href="#">Tech</a></li>
-                                            <li><a href="#">FAQ’s</a></li>
+                                            <li><a href="{{ route('faq') }}">FAQ’s</a></li>
                                         </ul>
                                     </div>
                                 </div>

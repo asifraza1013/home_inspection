@@ -4,6 +4,7 @@ use App\Http\Controllers\CompanyManagementController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanManagementController;
 use App\Http\Controllers\QuoteManagementController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,8 @@ Route::group(['middleware' => ['auth','verified']], function () {
     // end user actions
     Route::get('/get_quotation/{company?}', [FrontendController::class, 'getQuote'])->name('quotation');
     Route::get('/pricing_plans', [FrontendController::class, 'pricingPlanIndex'])->name('pricingplan');
+    Route::get('/subscription_summary/{plan}', [PlanManagementController::class, 'purchasePlanSummary'])->name('subscription.summary');
+    Route::post('/proceed_subscription', [PlanManagementController::class, 'procceddPlanSubscription'])->name('subscription.create');
     Route::get('/companies_list', [FrontendController::class, 'companiesList'])->name('companies.list');
     Route::get('/company_detail/{id}', [FrontendController::class, 'companyDetail'])->name('companies.detail');
     Route::get('/company_hiring/{id}', [FrontendController::class, 'hiringForm'])->name('companies.hiring.form');
@@ -78,6 +81,13 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
     Route::group(['prefix' => 'user'], function () {
         Route::get('/dashboard', 'DashboardController@userDashboard')->name('user.dashboard');
+
+        Route::get('/quick_quotation', [UserController::class, 'quickQuotation'])->name('quick.quotation');
+
+        Route::group(['as' => 'user.order.'], function () {
+            Route::get('order_list', [CompanyManagementController::class, 'orderList'])->name('list');
+            Route::get('order_detail/{id}', [CompanyManagementController::class, 'orderDetail'])->name('detail');
+        });
     });
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', 'DashboardController@adminDashboard')->name('admin.dashboard');
@@ -91,8 +101,23 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
         Route::group(['as' => 'order.'], function () {
             Route::get('order_list', [CompanyManagementController::class, 'orderList'])->name('list');
+            Route::get('order_detail/{id}', [CompanyManagementController::class, 'orderDetail'])->name('detail');
+            Route::get('approve_order/{id}', [CompanyManagementController::class, 'approveOrder'])->name('approve');
         });
+
+        Route::resource('plans', 'PlanManagementController');
     });
 
     Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('DatabaseNotificationsMarkasRead', function () {
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect()->back();
+    })->name('databasenotifications.markasread');
+    Route::get('send', 'UserManagement\UserController@sendNotification');
+    //mark as read
+    Route::get('DatabaseNotificationsMarkasRead', function () {
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect()->back();
+    })->name('databasenotifications.markasread');
 });

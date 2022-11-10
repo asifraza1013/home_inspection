@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CompniesDetail;
+use App\Plan;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -51,7 +52,9 @@ class FrontendController extends Controller
     public function pricingPlanIndex()
     {
         $title = 'Pricing Plans';
+        $plans = Plan::where('status', 1)->get();
         return view('frontend.pages.pricing_plan', compact([
+            'plans',
             'title',
         ]));
     }

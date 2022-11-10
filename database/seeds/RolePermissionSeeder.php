@@ -98,6 +98,7 @@ class RolePermissionSeeder extends Seeder
 
         $userPermissions = [
             'user-dashboard',
+            'order-list',
         ];
         $usr->assignRole($admin);
         $usr->syncPermissions($permissions);

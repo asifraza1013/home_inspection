@@ -78,3 +78,33 @@ if (!function_exists('adminRequest')) {
         else return false;
     }
 }
+
+if (!function_exists('createNotificationsDetail')) {
+    function createNotificationsDetail($user, $message, $userType, $order) // type: 1: admin/company, 2: agent, 3: owner, 4: superadmin
+    {
+        $details = [
+            'greeting' => ($userType == 1) ? 'Hi '.$order->company->company_name : 'Hi '.$user->name,
+            'body' => $message,
+            'thanks' => 'Thank you for using our services!',
+            'actionText' => 'View Order',
+            'actionURL' => route('order.detail', $order->id),
+            'order_id' => $order->id,
+            'user' => [
+                'image' => ($user->profile_photo) ? $user->profile_photo : asset('frontend/assets/images/about/profile 1.png'),
+                'name' => $user->name,
+                'url' => route('order.detail', $order->id)
+            ]
+        ];
+        return $details;
+    }
+
+    if (!function_exists('validationMessages')) {
+        function validationMessages($messages)
+        {
+           foreach ($messages as $key => $message) {
+            toast($message,'error');
+           }
+           return true;
+        }
+    }
+}

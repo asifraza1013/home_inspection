@@ -27,90 +27,32 @@
                 </div>
 
                 <div class="row pricing-table">
+                    @foreach ($plans as $plan)
                     <div class="col-lg-4 col-md-12 col-12">
                         <div class="plan border text-mgreen">
                             <div class="plan-header">
-                                <h4>Ultimate Plan</h4>
-                                <p class="text-muted">Plan short description</p>
-                                <div class="plan-price"><sup>$</sup>80<span>/mo</span> </div>
-                                {{-- <div class="countdown small" data-countdown="2022/09/22 11:34:51"></div> --}}
+                                <h4>{{ $plan->name }}</h4>
+                                <p class="text-muted">{{ $plan->description }}</p>
+                                <div class="plan-price"><sup>{{ currency() }}</sup>{{ $plan->price }}<span>/mo</span> </div>
                             </div>
                             <div class="plan-list">
                                 <ul>
-                                    <li><i class="fas fa-globe-americas"></i>Reprehenderit qui in ea voluptate velit </li>
-                                    <li><i class="fa fa-thumbs-up"></i>Voluptatem accusantium doloremque </li>
-                                    <li><i class="fa fa-signal"></i>Numquam eius modi tempora</li>
-                                    <li><i class="fa fa-user"></i>Qui dolorem ipsum quia dolor</li>
-                                    <li><i class="fa fa-star"></i>Consequuntur magni dolores eos qui</li>
-                                    <li><i class="fa fa-rocket"></i>4X Processing Power</li>
+                                    @foreach ($plan->features as $feature)
+                                        <li><i class="fas fa-check m-1"></i>{{ $feature }} </li>
+                                    @endforeach
                                 </ul>
                                 <hr>
                                 <div class="container">
-                                    <img src="{{ asset('frontend/assets/images/site/plan3.png') }}" alt="" class="img-fluid m-b-40 w-100 rounded">
+                                    <img src="{{ $plan->image }}" alt="" class="img-fluid m-b-40 w-100 rounded">
                                 </div>
                                 <hr>
                                 <div class="plan-button">
-                                    <a href="#" class="btn btn-light">Buy Now</a>
+                                    <a href="{{ route('subscription.summary', Crypt::encrypt($plan->id)) }}" class="btn btn-light">Buy Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-12">
-                        <div class="plan featured border text-mgreen">
-                            <div class="plan-header">
-                                <h4>Deluxe Plan</h4>
-                                <p class="text-muted">Plan short description</p>
-                                <div class="plan-price"><sup>$</sup>20<span>/mo</span> </div>
-                                {{-- <div class="countdown small" data-countdown="2021/08/11 11:34:51"></div> --}}
-                            </div>
-                            <div class="plan-list">
-                                <ul>
-                                    <li><i class="fas fa-globe-americas"></i>Reprehenderit qui in ea voluptate velit </li>
-                                    <li><i class="fa fa-thumbs-up"></i>Voluptatem accusantium doloremque </li>
-                                    <li><i class="fa fa-signal"></i>Numquam eius modi tempora</li>
-                                    <li><i class="fa fa-user"></i>Qui dolorem ipsum quia dolor</li>
-                                    <li><i class="fa fa-star"></i>Consequuntur magni dolores eos qui</li>
-                                    <li><i class="fa fa-rocket"></i>4X Processing Power</li>
-                                </ul>
-                                <hr>
-                                <div class="container">
-                                    <img src="{{ asset('frontend/assets/images/site/plan2.png') }}" alt="" class="img-fluid m-b-40 w-100 rounded">
-                                </div>
-                                <hr>
-                                <div class="plan-button">
-                                    <a href="#" class="btn btn-primary">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-12">
-                        <div class="plan border text-mgreen">
-                            <div class="plan-header">
-                                <h4>Professional Plan</h4>
-                                <p class="text-muted">Plan short description</p>
-                                <div class="plan-price"><sup>$</sup>69<span>/mo</span> </div>
-                                {{-- <div class="countdown small" data-countdown="2021/11/15 11:34:51"></div> --}}
-                            </div>
-                            <div class="plan-list">
-                                <ul>
-                                    <li><i class="fas fa-globe-americas"></i>Reprehenderit qui in ea voluptate velit </li>
-                                    <li><i class="fa fa-thumbs-up"></i>Voluptatem accusantium doloremque </li>
-                                    <li><i class="fa fa-signal"></i>Numquam eius modi tempora</li>
-                                    <li><i class="fa fa-user"></i>Qui dolorem ipsum quia dolor</li>
-                                    <li><i class="fa fa-star"></i>Consequuntur magni dolores eos qui</li>
-                                    <li><i class="fa fa-rocket"></i>4X Processing Power</li>
-                                </ul>
-                                <hr>
-                                <div class="container">
-                                    <img src="{{ asset('frontend/assets/images/site/plan1.png') }}" alt="" class="img-fluid m-b-40 w-100 rounded">
-                                </div>
-                                <hr>
-                                <div class="plan-button">
-                                    <a href="#" class="btn btn-light">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <!-- end: Pricing Table -->
                 <hr class="space">

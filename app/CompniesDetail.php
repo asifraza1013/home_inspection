@@ -27,4 +27,8 @@ class CompniesDetail extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function getNameAttribute() {
+        return "{$this->company_name}";
+	}
 }

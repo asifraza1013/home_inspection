@@ -13,6 +13,7 @@ return [
     'role_for' => [
         2 => 'admin'
     ],
+    'subscription_plan' => 'default',
     'admin' => 2,
     'builtin_roles' => [
         'admin',

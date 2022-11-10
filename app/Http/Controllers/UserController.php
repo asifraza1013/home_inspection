@@ -190,4 +190,16 @@ class UserController extends Controller
         flash('Profile updated successfully!')->success();
         return back();
     }
+
+    public function quickQuotation()
+    {
+        $title = 'Get Quick Qoutation';
+        $selectedCompany = null;
+        $compnies = CompniesDetail::whereNotNull('pricing')->get()->keyBy('id');
+        return view('users.quick_quotation', compact([
+            'compnies',
+            'selectedCompany',
+            'title',
+        ]));
+    }
 }

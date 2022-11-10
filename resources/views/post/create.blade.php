@@ -74,7 +74,7 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/summernote-bs4.min.css') }}">
 @endpush
-@push('scripts')
+@push('script')
 <script src="{{ asset('assets/js/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
 <script>

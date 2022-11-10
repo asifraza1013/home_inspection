@@ -112,7 +112,7 @@
     </div>
 @endsection
 
-@push('scripts')
+@push('script')
     <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
     <script>
         jQuery(document).ready(function(){

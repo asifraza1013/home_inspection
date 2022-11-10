@@ -9,10 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, HasRoles, LogsActivity, ThrottlesLogins;
+    use Notifiable, HasRoles, LogsActivity, ThrottlesLogins, Billable;
     protected static $ignoreChangedAttributes = ['password'];
 
     /**

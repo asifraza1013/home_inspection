@@ -40,19 +40,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}" href="#">
+                            <a class="nav-link {{ request()->is('quick.quotation*') ? 'active' : '' }}" href="{{ route('quick.quotation') }}">
                                 <i class="ni ni-archive-2 text-primary"></i>
                                 <span class="nav-link-text">Quick Quote</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}" href="#">
+                            <a class="nav-link {{ request()->is('user.order.list*') ? 'active' : '' }}" href="{{ route('user.order.list') }}">
                                 <i class="ni ni-tag text-primary"></i>
                                 <span class="nav-link-text">Inspection Request</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('user.dashboard*') ? 'active' : '' }}" href="#">
+                            <a class="nav-link {{ request()->is('user.order.list*') ? 'active' : '' }}" href="{{ route('user.order.list', ['order' => 'approved']) }}">
                                 <i class="ni ni-time-alarm text-primary"></i>
                                 <span class="nav-link-text">Inspection Schedule</span>
                             </a>
@@ -252,7 +252,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('activity-log*') ? 'active' : '' }}" href="#">
+                            <a class="nav-link {{ request()->is('plans.*') ? 'active' : '' }}" href="{{ route('plans.index') }}">
                                 <i class="ni ni-bell-55 text-primary"></i>
                                 <span class="nav-link-text">Subscription Plan Settings</span>
                             </a>

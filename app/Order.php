@@ -30,4 +30,8 @@ class Order extends Model
     {
         return $this->belongsTo('App\CompniesDetail', 'company_id', 'id');
     }
+
+    public function getNameAttribute() {
+        return "{$this->first_name} {$this->last_name}";
+	}
 }
