@@ -54,9 +54,9 @@
                                         </td>
                                         <td class="text-center">
                                             {!! Form::open(['route' => ['plans.destroy', $plan],'method' => 'delete',  'class'=>'d-inline-block dform']) !!}
-                                            <a class="btn btn-info btn-sm m-1" data-toggle="tooltip" data-placement="top" title="Edit user details" href="{{route('plans.edit',$plan)}}">
+                                            {{-- <a class="btn btn-info btn-sm m-1" data-toggle="tooltip" data-placement="top" title="Edit user details" href="{{route('plans.edit',$plan)}}">
                                                 <i class="fa fa-edit" aria-hidden="true"></i>
-                                            </a>
+                                            </a> --}}
                                                 <button type="submit" class="btn delete btn-danger btn-sm m-1" data-toggle="tooltip" data-placement="top" title="Delete Plan" href="">
                                                     <i class="fas fa-trash"></i>
                                                 </button>

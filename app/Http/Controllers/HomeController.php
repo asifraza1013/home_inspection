@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -37,6 +38,16 @@ class HomeController extends Controller
         else return redirect(route('super.admin.dashboard'));;
     }
 
+    public function register()
+    {
+        $title = 'New Registrations';
+        $roles = Role::whereIn('name',['admin', 'agent', 'user'])->pluck('name', 'id');
+        return view('auth.register', compact([
+            'roles',
+            'title',
+        ]));
+    }
+
     /**
      * User registration flow
      */
@@ -44,19 +55,24 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
+            'role' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string'],
         ]);
 
         // dd($validator->errors()->getMessages());
         // Alert::success('Congrats', 'You\'ve Successfully Registered');
+        $roles = Role::whereIn('name',['admin', 'agent', 'user'])->pluck('id');
+        if(!in_array($request->role, $roles->toArray())){
+            toast('Please try with correct data Thanks!','error');
+            return redirect()->back();
+        }
         if ($validator->fails()) {
             toast('Please try with correct data Thanks!','error');
             return redirect()->back();
         }
 
         $data = $request->all();
-        // dd($data);
         $user = new User();
         $user->name = $data['name'];
         $user->email = $data['email'];
@@ -67,9 +83,7 @@ class HomeController extends Controller
         // if (setting('register_notification_email')) {
         //     Mail::to($data['email'])->send( new UserRegistered($user));
         // }
-        if ( setting('default_role')) {
-            $user->assignRole(setting('default_role'));
-        }
+        $user->assignRole($request->role);
         toast('Register Successfully. Please try login with correct credentials!','success');
         return redirect(route('login'));
     }

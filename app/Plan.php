@@ -15,6 +15,7 @@ class Plan extends Model
         'name',
         'description',
         'stripe_plan',
+        'can_order',
         'features',
         'image',
         'price',

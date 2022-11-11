@@ -21,6 +21,7 @@ class CreatePlansTable extends Migration
             $table->json('features');
             $table->string('image');
             $table->string('price');
+            $table->string('can_order')->default('50', '100', '10000');
             $table->integer('status')->comment('1: Active, 2: Terminated');
             $table->softDeletes();
             $table->timestamps();

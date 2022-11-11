@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //     return redirect()->route('home');
 // });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id?}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
@@ -34,6 +34,7 @@ Route::get('/faq', [FrontendController::class, 'faqIndex'])->name('faq');
 Route::get('/contact_us', [FrontendController::class, 'contactusIndex'])->name('contactus');
 Route::post('/contact_us', [ContactusController::class, 'storeContactMessage'])->name('store.contact.us');
 
+Route::get('/register', [HomeController::class, 'register'])->name('register');
 Route::post('/registrations', [HomeController::class, 'manuallRegistrations'])->name('user.manual.registrations');
 
 

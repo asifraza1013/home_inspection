@@ -89,7 +89,11 @@ class UserController extends Controller
             $user->update();
         }
         if(in_array($user->roles[0]->name, config('constants.admin_predefined_roles'))){
-            $company = CompniesDetail::where('id', $auth->company_id)->first();
+            if($auth->company_id){
+                $company = CompniesDetail::where('id', $auth->company_id)->first();
+            }else{
+                $company = CompniesDetail::where('user_id', $auth->id)->first();
+            }
             $user->company_id = $company->id;
             $user->update();
         }

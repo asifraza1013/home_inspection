@@ -26,9 +26,15 @@ class DashboardController extends Controller
 
     public function adminDashboard()
     {
+        // check if admin purchased subscription plan
+        $user = Auth::user();
+        if($userRole = $user->getRoleNames()[0] == 'admin' && !Auth::user()->subscribed(config('constants.subscription_plan'))){
+            toast('Please subscribe most suitable plan for you. Thank you !','warning');
+            return redirect(route('pricingplan'));
+        }
         // check if company detail exists
         $companyDetail = CompniesDetail::where('user_id', Auth::user()->id)->first();
-        if(is_null($companyDetail)){
+        if(is_null($userRole = $user->getRoleNames()[0] == 'admin'  && $companyDetail)){
             toast('Please setup required details before proceed. Thank you!','warning');
             return redirect(route('user.profile'));
         }

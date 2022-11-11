@@ -40,6 +40,10 @@
                                             style="cursor: pointer;"></i></span>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                {{ Form::label('role', 'Select Role', ['class' => 'form-control-label']) }}
+                                {{ Form::select('role', $roles, null, [ 'class'=> 'selectpicker form-control', 'placeholder' => 'Select role...']) }}
+                            </div>
                             <div class="mt-4"><button type="submit" class="btn btn-primary btn-block btn-primary">Sign
                                     up</button>
                             </div>

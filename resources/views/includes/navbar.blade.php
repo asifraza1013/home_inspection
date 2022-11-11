@@ -92,13 +92,13 @@
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->is('admin.dashboard*') ? 'active' : '' }}"
                                 href="{{ route('admin.dashboard') }}">
                                 <i class="ni ni-notification-70 text-primary"></i>
                                 <span class="nav-link-text">Notifications</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('admin.dashboard*') ? 'active' : '' }}" href="#">
                                 <i class="ni ni-archive-2 text-primary"></i>
@@ -115,7 +115,7 @@
                             <a class="nav-link {{ request()->is('users*') ? 'active' : '' }}"
                                 href="{{ route('users.index', ['type' => 'inspector']) }}">
                                 <i class="ni ni-circle-08 text-primary"></i>
-                                <span class="nav-link-text">Agents/Inspector</span>
+                                <span class="nav-link-text">Inspector</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -127,11 +127,11 @@
                             <div class="collapse" id="inspections">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link"><span class="sidenav-mini-icon">D
+                                        <a href="{{ route('order.list', ['order' => 'unapproved']) }}" class="nav-link"><span class="sidenav-mini-icon">D
                                             </span><span class="sidenav-normal">Inspections Requested</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link"><span class="sidenav-mini-icon">D
+                                        <a href="{{ route('order.list') }}" class="nav-link"><span class="sidenav-mini-icon">D
                                             </span><span class="sidenav-normal">Inspections Scheduled</span></a>
                                     </li>
                                 </ul>
@@ -220,11 +220,6 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('order.*') ? 'active' : '' }}" href="#inspections"
-                                data-toggle="collapse" role="button" aria-expanded="true" aria-controls="inspections">
-                                <i class="fas text-primary fa-tasks"></i>
-                                <span class="nav-link-text">Inspections Requests</span>
-                            </a>
                             <div class="collapse" id="inspections">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">

@@ -21,6 +21,11 @@ class QuoteManagementController extends Controller
     {
         $title = 'User Profile';
         $user = Auth::user();
+        // check if admin purchased subscription plan
+        if($userRole = $user->getRoleNames()[0] == 'admin' && !Auth::user()->subscribed(config('constants.subscription_plan'))){
+            toast('Please subscribe most suitable plan for you. Thank you !','warning');
+            return redirect(route('pricingplan'));
+        }
         return view('frontend.pages.user.profile', compact([
             'title',
             'user',

@@ -28,11 +28,18 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-8">
                                 <div class="form-group">
                                     <label for="">Description</label>
                                     <input type="text" name="description" class="form-control"
                                         value="{{ old('description') }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Order Allowed Per Month</label>
+                                    <input type="text" name="can_order" class="form-control"
+                                        value="{{ old('can_order') }}">
                                 </div>
                             </div>
                         </div>

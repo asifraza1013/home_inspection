@@ -43,7 +43,7 @@ class RolePermissionSeeder extends Seeder
             'user-dashboard',
 
             'manage-company-profile',
-            'manage-company-profile',
+            'purchase-plan',
         ];
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
@@ -59,6 +59,9 @@ class RolePermissionSeeder extends Seeder
             'status' => true,
             'email_verified_at' => now(),
         ]);
+        $usr->assignRole($admin);
+        $usr->syncPermissions($permissions);
+
 
         $adminPermissions = [
             'view-user',
@@ -68,10 +71,9 @@ class RolePermissionSeeder extends Seeder
             'view-role',
             'admin-dashboard',
             'manage-company-profile',
+            'purchase-plan',
+            'order-list',
         ];
-        $usr->assignRole($admin);
-        $usr->syncPermissions($permissions);
-
         // Create admin & role
         $admin= Role::create(['name' => 'admin']);
         $admin->syncPermissions($permissions);

@@ -14,8 +14,6 @@ class DatabaseSeeder extends Seeder
          $this->call([
              RolePermissionSeeder::class,
              SettingsSeeder::class,
-             CategorySeeder::class,
-             PostSeeder::class
          ]);
     }
 }

@@ -65,7 +65,11 @@ class CompanyManagementController extends Controller
         $squareTotal = (float) $request->total_sqare *  (float) $companyDetail->per_square;
         $orderTotal = $servicesAmount + $yearsTotal + $squareTotal;
 
-        $agent = User::where('company_id', $companyId)->role('agent')->inRandomOrder()->first();
+        $agent = User::where('company_id', $companyId)->role('inspector')->inRandomOrder()->first();
+        if(is_null($agent)){
+            toast('Opps can\'t find any available inspector for this order. Please contact company suport or admin to resolve. Thank you.','error');
+            return back();
+        }
 
         $order = New Order();
         $order->inspection_date	= $userDetail->inspection_date;
@@ -94,6 +98,7 @@ class CompanyManagementController extends Controller
         $order->save();
 
 
+        $superAdmin = User::where('email', 'superadmin@admin.com')->first();
         // TODO: send notifications superadmin
         $details = [
             'greeting' => 'Hi '.$user->name,
@@ -103,12 +108,12 @@ class CompanyManagementController extends Controller
             'actionURL' => route('order.detail', $order->id),
             'order_id' => $order->id,
             'user' => [
-                'image' => ($user->profile_photo) ? $user->profile_photo : asset('frontend/assets/images/about/profile 1.png'),
-                'name' => $user->name,
+                'image' => ($superAdmin->profile_photo) ? $superAdmin->profile_photo : asset('frontend/assets/images/about/profile 1.png'),
+                'name' => $superAdmin->name,
                 'url' => route('order.detail', $order->id)
             ]
         ];
-        Notification::send($user, new OrderNotifications($details));
+        Notification::send($superAdmin, new OrderNotifications($details));
         toast('Order Created success. We will get back to you soon. Thank you for using our services!','success');
         return redirect(route('welcome'));
     }

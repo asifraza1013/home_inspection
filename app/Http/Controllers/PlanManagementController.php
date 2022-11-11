@@ -59,6 +59,7 @@ class PlanManagementController extends Controller
             'status' => 'required|string',
             'stripe_plan' => 'required|string',
             'price' => 'required|string',
+            'can_order' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ], [
             'token.string' => 'Please enter correct detail'
@@ -79,6 +80,7 @@ class PlanManagementController extends Controller
         $plans->description = $request->description;
         $plans->features = $request->features;
         $plans->price = $request->price;
+        $plans->can_order = $request->can_order;
         $plans->image = asset('plan/'.$profileImage);
         $plans->status = $request->status;
         $plans->stripe_plan = $request->stripe_plan;
