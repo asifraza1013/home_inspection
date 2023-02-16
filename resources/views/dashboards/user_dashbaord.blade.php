@@ -117,62 +117,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($orders as $order)
                             <tr>
                                 <th scope="row">
-                                    Test 1
+                                    {{ $order->company->company_name }}
                                 </th>
                                 <td>
-                                    4,569
+                                    {{ $order->total_square }}
                                 </td>
                                 <td>
-                                    2.3
+                                    {{ $order->total_years }}
                                 </td>
                                 <td>
-                                    1,331
+                                    {{ $order->total }}
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    Test 2
-                                </th>
-                                <td>
-                                    1,522
-                                </td>
-                                <td>
-                                    1.64
-                                </td>
-                                <td>
-                                    1,121
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Test 3
-                                </th>
-                                <td>
-                                    2,122
-                                </td>
-                                <td>
-                                    1.99
-                                </td>
-                                <td>
-                                    2,432
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Test 4
-                                </th>
-                                <td>
-                                    983
-                                </td>
-                                <td>
-                                    200 Days
-                                </td>
-                                <td>
-                                    1,510
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

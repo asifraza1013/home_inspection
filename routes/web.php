@@ -97,6 +97,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
         Route::post('/profile', [QuoteManagementController::class, 'updateCompanyProfile'])->name('company.profile.update');
         Route::post('/pricing', [QuoteManagementController::class, 'updateCompanyPricing'])->name('company.pricing.update');
     });
+
     Route::group(['prefix' => 'super_admin'], function () {
         Route::get('/dashboard', 'DashboardController@superAdminDashboard')->name('super.admin.dashboard');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CompniesDetail;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,8 +48,12 @@ class DashboardController extends Controller
     public function userDashboard()
     {
         $title = 'User Dashboard';
+        $user = Auth::user();
+        $orders = Order::with(['company'])->where('user_id', $user->id)->take(10)->get();
         return view('dashboards.user_dashbaord', compact([
+            'orders',
             'title',
+            'user',
         ]));
     }
 }

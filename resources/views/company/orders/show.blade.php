@@ -88,6 +88,7 @@
                         </div>
 
                         <div class="col-12"><hr></div>
+                        @can('approve-order')
                         <div class="col-lg-6">
                             <label for="">Admin Approvel</label>
                             <h5 class="text-mute">{!! $order->admin_approved
@@ -97,6 +98,7 @@
 
                             </h5>
                         </div>
+                        @endcan
 
                         <div class="col-lg-6">
                             <label for="">Order Status</label>

@@ -76,6 +76,13 @@
                                 <span class="nav-link-text">Profile Settings</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{{ url('/') }}">
+                                <i class="ni ni-world-2 text-primary"></i>
+                                <span class="nav-link-text">Visit Site</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
