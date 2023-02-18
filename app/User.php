@@ -11,7 +11,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Cashier\Billable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable, HasRoles, LogsActivity, ThrottlesLogins, Billable;
     protected static $ignoreChangedAttributes = ['password'];
@@ -22,7 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone_number', 'profile_photo', 'status', 'type','email_verified_at'
+        'name', 'email', 'password', 'phone_number', 'profile_photo', 'status', 'type','email_verified_at',
+        'verification_otp'
     ];
 
     /**

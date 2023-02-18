@@ -6,6 +6,7 @@ use App\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -68,6 +69,14 @@ class PlanManagementController extends Controller
             // dd($validator->errors()->getMessages());
             validationMessages($validator->errors()->getMessages());
             return redirect()->back();
+        }
+
+        $existPlan = Plan::where('name', $request->name)->withTrashed()->first();
+        if($existPlan){
+            $existPlan->deleted_at = NULL;
+            $existPlan->save();
+            toast('Plan with same name existed already.!','success');
+            return redirect(route('plans.index'));
         }
 
         $image = $request->image;
@@ -133,5 +142,24 @@ class PlanManagementController extends Controller
         }
         toast('Opps! something is not right. Please try agains.', 'success');
         return redirect(route('pricingplan'));
+    }
+
+    public function subscriptionsList(Request $request)
+    {
+
+        // $stripe = new \Stripe\StripeClient(
+        //     'sk_test_51M2EoYDSFHeRq6UjD9oYLECVTK4fvXjrodbQkfRV0ghj1oh7u6dwGnPjUyFsdzOTikmBUBLes8mnJ3ylhGDopkZf00ZPXD8IRp'
+        //   );
+        // dd($stripe->subscriptions->all(['limit' => 10]));
+
+        $title = 'Subscriptions List';
+        $subscriptions = DB::table('subscriptions')
+        ->join('users', 'users.id', '=', 'subscriptions.user_id')
+        ->join('plans', 'plans.stripe_plan', '=', 'subscriptions.stripe_plan')
+        ->paginate(setting('record_per_page', 15));
+        return view('admin.subscription.index', compact([
+            'subscriptions',
+            'title',
+        ]));
     }
 }

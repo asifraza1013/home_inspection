@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{ asset('frontend/assets/images/favicon.png') }}">
-    <title>{{ isset($title) ? $title : null }} - HOME INSPECTION</title>
+    <title>{{ isset($title) ? $title : null }} - HOME INSPECTION SERVICE</title>
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -67,7 +67,7 @@
                                     <li><a href="{{ route('companies.list') }}">Companies</a></li>
                                     <li><a href="{{ route('quotation') }}">Quik Quote</a></li>
                                     <li><a href="{{ route('welcome') }}">Reports</a></li>
-                                    <li><a href="{{ route('welcome') }}">Tech Support</a></li>
+                                    <li><a href="{{ route('contactus') }}">Tech Support</a></li>
                                     <li><a href="{{ route('faq') }}">FAQ’s</a></li>
                                     <li>
                                         <div class="p-dropdown"><a href="#">

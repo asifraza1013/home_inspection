@@ -44,11 +44,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <div class="form-group">
                                         {{ Form::label('role', 'Select Role', ['class' => 'form-control-label']) }}
                                         {{ Form::select('role', $roles, null, [ 'class'=> 'selectpicker form-control', 'placeholder' => 'Select role...']) }}
                                     </div>
+                                </div> --}}
+                                <div class="col-lg-6">
+                                    {{ Form::label('role', 'Select Role', ['class' => 'form-control-label']) }}
+                                    @foreach ($roles as $key => $permission)
+                                    <div class="form-group p-2 d-inline-block">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" name="role[]" value="{{ $key }}" class="custom-control-input" id="{{ $permission }}">
+                                            {{ Form::label($permission, $permission, ['class' => 'custom-control-label']) }}
+                                        </div>
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

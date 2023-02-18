@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\CompniesDetail;
+use App\Notifications\SendOtpNotification;
+use App\Notifications\SendTemporaryPassword;
 use App\Plan;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class FrontendController extends Controller
 {
@@ -85,9 +92,13 @@ class FrontendController extends Controller
         }
     }
 
-    public function hiringForm(Request $request, $company)
+    public function hiringForm(Request $request, $company = null)
     {
         $title = 'Hiring Form';
+        if(!$company){
+            $company = CompniesDetail::where('pricing', '!=', NULL)->first()->id;
+            $company = Crypt::encrypt($company);
+        }
         return view('company.hiring_form', compact([
             'company',
             'title',
@@ -130,5 +141,84 @@ class FrontendController extends Controller
             toast('Opps something is wrong. Can\'t find Company Detail!','error');
             return redirect('companies.list');
         }
+    }
+
+    public function webClientVerification($user, $sendOtp = false)
+    {
+        $noFooter = true;
+        $title = 'Account Verification Screen';
+        $user = User::where('id', Crypt::decrypt($user))->first();
+        if(!$user) {
+            toast()->error('Opss! can\'t find user detail. Please try with correct data.');
+            return redirect(route('login'));
+        }
+        if($user->email_verified_at){
+            toast()->warning('Your account is already verified. Please proceed.');
+            return redirect(route('home'));
+        }
+        if($sendOtp){
+
+            // send email notification
+            $otp = rand(0000, 9999);
+           Log::info("OTP user ".$user->id. ' OTP '.$otp);
+
+            $user->notify(new SendOtpNotification($user, $otp));
+            $user->verification_otp = $otp;
+            $user->update();
+            return redirect(route('client.verification.screen', Crypt::encrypt($user->id)));
+        }
+
+        return view('auth.verify', compact([
+            'noFooter',
+            'title',
+            'user',
+        ]));
+    }
+
+    public function webClientOtpVerification(Request $request)
+    {
+        Validator::make($request->all(), [
+            'user' => 'required|string',
+            'otp' => 'required|numeric',
+        ]);
+
+        $userapp = User::where('id', Crypt::decrypt($request->user))->first();
+        Log::info("userapp OTP ".json_encode($userapp));
+
+        if(!$userapp->verification_otp || $request->otp != $userapp->verification_otp){
+            toast()->error('OTP is not correct. Please try enter correct one. Thank you.');
+            return redirect()->back();
+        }
+
+        $userapp->verification_otp = null;
+        $userapp->email_verified_at = Carbon::now()->toDateTimeString();
+        $userapp->update();
+
+        return redirect(route('home'))->with('success', 'Account verificaiton is successfull. Thank you.');
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $title = 'Reset Password';
+        return view('auth.passwords.reset', compact([
+            'title'
+        ]));
+    }
+
+    public function sentNewPassword(Request $request)
+    {
+        Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        $rendomHash = Str::random(6);
+        Log::info('rendomHash '. $rendomHash. 'email - '.$request->email);
+        $user = User::where('email',  $request->email)->first();
+        $user->password = $rendomHash;
+        $user->save();
+
+        $user->notify(new SendTemporaryPassword($user, $rendomHash));
+        toast()->success('New Password already sent to your email that you can use to login.');
+        return redirect(route('login'));
     }
 }

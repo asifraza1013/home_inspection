@@ -107,4 +107,13 @@ if (!function_exists('createNotificationsDetail')) {
            return true;
         }
     }
+
+    if (!function_exists('checkUserRole')) {
+        function checkUserRole($roles)
+        {
+            $differenceArray1 = array_diff($roles, config('constants.builtin_roles'));
+            if(count($differenceArray1) < 1) return true;
+            else false;
+        }
+    }
 }

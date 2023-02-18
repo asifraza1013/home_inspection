@@ -32,12 +32,17 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-        $currentRoleName = Auth::user()->roles[0]->name;
+        $user = Auth::user();
+
+        $currentRoleName = $user->roles[0]->name;
         if ($request->has('search')) {
             $users = User::where('name', 'like', '%'.$request->search.'%')->paginate(setting('record_per_page', 15));
         }else{
             if($request->has('type') && $request->type == 'admin') $users= User::role(['admin'])->paginate(setting('record_per_page', 15));
-            else if($request->has('type') && $request->type == 'inspector') $users= User::role(config('constants.admin_predefined_roles'))->paginate(setting('record_per_page', 15));
+            else if($request->has('type') && $request->type == 'inspector'){
+                $company = ($user->company_id) ? $user->company_id : $user->company->id;
+                $users= User::where('company_id', $company)->paginate(setting('record_per_page', 15));
+            }
             else if(adminRequest($currentRoleName)) $users= User::role(config('constants.admin_predefined_roles'))->paginate(setting('record_per_page', 15));
             else $users= User::role('user')->paginate(setting('record_per_page', 15));
         }
@@ -73,7 +78,7 @@ class UserController extends Controller
         if ($request->profile_photo) {
             $userData['profile_photo'] = parse_url($request->profile_photo, PHP_URL_PATH);
         }
-        $userData['email_verified_at'] = Carbon::now()->toDateTimeString();
+        // $userData['email_verified_at'] = Carbon::now()->toDateTimeString();
         $userData['status'] = $request->status;
         $user = User::create($userData);
         $user->assignRole($request->role);
@@ -99,7 +104,7 @@ class UserController extends Controller
         }
 
         flash('User created successfully!')->success();
-        return redirect()->route('users.index');
+        return redirect()->back();
 
     }
 

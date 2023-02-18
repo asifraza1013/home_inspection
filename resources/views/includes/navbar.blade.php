@@ -52,6 +52,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('companies.hiring.form') }}">
+                                <i class="ni ni-time-alarm text-primary"></i>
+                                <span class="nav-link-text">Make Inspection Request</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->is('user.order.list*') ? 'active' : '' }}" href="{{ route('user.order.list', ['order' => 'approved']) }}">
                                 <i class="ni ni-time-alarm text-primary"></i>
                                 <span class="nav-link-text">Inspection Schedule</span>
@@ -106,7 +112,7 @@
                                 <span class="nav-link-text">Notifications</span>
                             </a>
                         </li> --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->is('admin.dashboard*') ? 'active' : '' }}" href="#">
                                 <i class="ni ni-archive-2 text-primary"></i>
                                 <span class="nav-link-text">History</span>
@@ -117,7 +123,7 @@
                                 <i class="ni ni-tag text-primary"></i>
                                 <span class="nav-link-text">Reports</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('users*') ? 'active' : '' }}"
                                 href="{{ route('users.index', ['type' => 'inspector']) }}">
@@ -248,7 +254,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('activity-log*') ? 'active' : '' }}" href="#">
+                            <a class="nav-link {{ request()->is('subscription.list*') ? 'active' : '' }}" href="{{ route('subscription.list') }}">
                                 <i class="fas fa-history text-primary"></i>
                                 <span class="nav-link-text">Subscribers History</span>
                             </a>

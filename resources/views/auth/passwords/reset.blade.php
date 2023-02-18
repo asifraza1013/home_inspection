@@ -1,65 +1,43 @@
-@extends('layouts.auth')
+@extends('frontend.layouts.layouts')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
-
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+        <!-- Page title -->
+        <section id="page-title" data-bg-parallax="images/parallax/5.jpg">
+            <div class="container">
+                <div class="page-title">
+                    <h1>Reset Password</h1>
+                    <span>Please enter your email. New password will be sent to your email address.</span>
+                </div>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="{{ url('/') }}">Home</a>
+                        </li>
+                        <li class="active"><a href="">Password Recover</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </section>
+        <!-- end: Page title -->
+        <!-- Section -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-3">
+                        <h2 class="text-center">Forgot Password?</h2>
+                        <form class="form-validation" method="POST" action="{{ route('client.reset.password.submit') }}">
+                            @csrf
+                            <div class="form-group">
+                                <p class="center">To receive a new password, enter your email address below.</p>
+                                <input type="email" name="email" class="form-control form-white placeholder" placeholder="Enter your email..." required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Recover your Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end: Section -->
 @endsection

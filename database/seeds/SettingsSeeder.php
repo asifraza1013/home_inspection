@@ -12,7 +12,7 @@ class SettingsSeeder extends Seeder
      */
     public function run()
     {
-        Setting::set('company_name', 'Home Inspection');
+        Setting::set('company_name', 'Home Inspection Service');
         Setting::set('company_email', 'help@email.com');
         Setting::set('company_phone', '+98765432111');
         Setting::set('company_address', 'Bikaner');

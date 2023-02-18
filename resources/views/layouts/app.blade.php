@@ -45,6 +45,13 @@
     <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-confirm.min.js')}}"></script>
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
+
+    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery('#uploadFile').filemanager('file');
+        })
+    </script>
     @yield('script')
 </body>
 </html>

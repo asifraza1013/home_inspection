@@ -29,8 +29,14 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id?}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
+Route::get('account_verification/{user}/{sendOtp?}', [FrontendController::class, 'webClientVerification'])->name('client.verification.screen');
+Route::post('account_verification', [FrontendController::class, 'webClientOtpVerification'])->name('client.verification.submit');
+Route::get('reset_password', [FrontendController::class, 'resetPassword'])->name('client.reset.password');
+Route::post('reset_password', [FrontendController::class, 'sentNewPassword'])->name('client.reset.password.submit');
+
 Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 Route::get('/faq', [FrontendController::class, 'faqIndex'])->name('faq');
+
 Route::get('/contact_us', [FrontendController::class, 'contactusIndex'])->name('contactus');
 Route::post('/contact_us', [ContactusController::class, 'storeContactMessage'])->name('store.contact.us');
 
@@ -53,7 +59,7 @@ Route::post('/registrations', [HomeController::class, 'manuallRegistrations'])->
 // Auth::routes(['verify'=>false]);
 
 
-Route::group(['middleware' => ['auth','verified']], function () {
+Route::group(['middleware' => ['auth','email_verification']], function () {
 
     // end user actions
     Route::get('/get_quotation/{company?}', [FrontendController::class, 'getQuote'])->name('quotation');
@@ -62,8 +68,8 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::post('/proceed_subscription', [PlanManagementController::class, 'procceddPlanSubscription'])->name('subscription.create');
     Route::get('/companies_list', [FrontendController::class, 'companiesList'])->name('companies.list');
     Route::get('/company_detail/{id}', [FrontendController::class, 'companyDetail'])->name('companies.detail');
-    Route::get('/company_hiring/{id}', [FrontendController::class, 'hiringForm'])->name('companies.hiring.form');
-    Route::post('/company_hiring', [FrontendController::class, 'userHiringDetail'])->name('companies.hiring.form.submit');
+    Route::get('/company_hiring/{id?}', [FrontendController::class, 'hiringForm'])->name('companies.hiring.form');
+    Route::post('/company_hiring_post', [FrontendController::class, 'userHiringDetail'])->name('companies.hiring.form.submit');
     Route::get('/company_quotation/{token}', [FrontendController::class, 'getCompanyQuotationForm'])->name('companies.quotation');
 
 
@@ -107,6 +113,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
             Route::get('approve_order/{id}', [CompanyManagementController::class, 'approveOrder'])->name('approve');
         });
 
+        Route::get('subscription_lsit', [PlanManagementController::class, 'subscriptionsList'])->name('subscription.list');
         Route::resource('plans', 'PlanManagementController');
     });
 
@@ -116,7 +123,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
         auth()->user()->unreadNotifications->markAsRead();
         return redirect()->back();
     })->name('databasenotifications.markasread');
-    Route::get('send', 'UserManagement\UserController@sendNotification');
+    // Route::get('send', 'UserManagement\UserController@sendNotification');
     //mark as read
     Route::get('DatabaseNotificationsMarkasRead', function () {
         auth()->user()->unreadNotifications->markAsRead();

@@ -29,7 +29,9 @@ class RoleController extends Controller
             ->log('view');
         $title = 'Manage Roles';
         $auth = Auth::user();
-        $roles = Role::paginate(setting('record_per_page', 15));
+        $currentRoleName = $auth->roles[0]->name;
+        if($currentRoleName == 'super-admin') $roles = Role::paginate(setting('record_per_page', 15));
+        else $roles = Role::where('role_for', 2)->paginate(setting('record_per_page', 15));
         return view('roles.index', compact('roles','title'));
     }
 
